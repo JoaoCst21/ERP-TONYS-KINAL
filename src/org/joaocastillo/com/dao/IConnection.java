@@ -7,7 +7,8 @@ import java.sql.SQLException;
 public interface IConnection<M> {
     public M resulsetToObject(ResultSet resultSet) throws SQLException;
 
-    public void setProcedureParams(PreparedStatement sp, M object) throws SQLException;
+    public void setProcedureParamsUpdate(PreparedStatement sp, M object) throws SQLException;
+    public void setProcedureParamsCreate(PreparedStatement sp, M object) throws SQLException;
 
     public void setIdParam(PreparedStatement sp, String id) throws SQLException;
 }

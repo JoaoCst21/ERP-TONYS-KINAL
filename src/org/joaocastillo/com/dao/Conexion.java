@@ -8,11 +8,19 @@ public class Conexion {
     private static Conexion instance;
     private Connection connection;
 
+    private boolean isDev = false;
+    private String URL_HOST = isDev ? "jdbc:mysql://containers-us-west-163.railway.app:7417" : "jdbc:mysql://localhost:3306";
+    private String DATABASE = "DBTonysKinal2023";
+    private String USER = "root";
+    private String PASSWORD = isDev ? "EAFkW5NszMgSxhMQ18xU" : "K$oport3Lab";
+
     // Constructor
     private Conexion() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/rentavehiculos?useSSL=false", "root", "root");
+            System.out.println(URL_HOST + "/" + DATABASE + "?enabledTLSProtocols=TLSv1.2");
+            System.out.println("jdbc:mysql://localhost:3306/rentavehiculos?useSSL=false");
+            connection = DriverManager.getConnection(URL_HOST + "/" + DATABASE + "?useSSL=false", USER, PASSWORD);
         } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }

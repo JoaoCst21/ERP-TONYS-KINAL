@@ -37,7 +37,7 @@ public class DAO<M> implements CRUD<M> {
     public void save(M model) throws Exception {
         try {
             PreparedStatement sp = prepareCall(saveProcedure);
-            connectionHelper.setProcedureParams(sp, model);
+            connectionHelper.setProcedureParamsCreate(sp, model);
             sp.execute();
         } catch (SQLException e) {
             printError(e);
@@ -82,7 +82,7 @@ public class DAO<M> implements CRUD<M> {
     public void update(M model) throws Exception {
         try {
             PreparedStatement sp = prepareCall(updateProcedure);
-            connectionHelper.setProcedureParams(sp, model);
+            connectionHelper.setProcedureParamsUpdate(sp, model);
             sp.execute();
         } catch (SQLException e) {
             printError(e);
