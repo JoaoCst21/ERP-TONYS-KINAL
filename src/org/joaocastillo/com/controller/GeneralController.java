@@ -1,5 +1,6 @@
 package org.joaocastillo.com.controller;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,7 +34,7 @@ public abstract class GeneralController<M> implements Initializable {
     private ImageView imgCreateSave;
 
     @FXML
-    private TableView tblModel;
+    protected TableView<M> tblModel;
 
     private boolean isAutoIncrement;
     private Image saveImage = new Image("/org/joaocastillo/com/image/save.png");
@@ -41,17 +42,31 @@ public abstract class GeneralController<M> implements Initializable {
     private DAO<M> dao;
     private HashMap<String, TextField> fields;
 
+    private Operation currentOperation;
+    @FXML private ImageView imgDeleteCancel;
+    private Image deleteImage = new Image("/org/joaocastillo/com/image/delete.png");
+    private Image cancelImage = new Image("/org/joaocastillo/com/image/cancel.png");
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         imgCreateSave.setImage(createImage);
+        imgDeleteCancel.setImage(deleteImage);
         setDefaultFields();
         disableFields();
         try {
             // set the columns to the table
+            tblModel.getColumns().addAll(createColumns());
+            fetchData();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
+    private void fetchData() throws Exception {
+        tblModel.setItems(FXCollections.observableArrayList(getDao().readAll()));
+    }
+
+    protected abstract List<TableColumn<M, ?>> createColumns();
 
 
     // Constructor
@@ -68,14 +83,41 @@ public abstract class GeneralController<M> implements Initializable {
 
     public void onCreate() {
         enableFields();
-        toggleImage();
+        if (btnSave.getText().equals("Guardar")) onSave();
+        toggleImage("Nuevo");
+        toggleImageCancel();
+        currentOperation = () -> getDao().save(getModel());
     }
 
-    private void toggleImage() {
+    public void onCancel() {
+        disableFields();
+        clearFields();
+        if (btnDelete.getText().equals("Eliminar") && getModelID() != null) {
+            onDelete();
+            return;
+        }
+        toggleImageCancel();
+        toggleImage("Nuevo");
+    }
+    private void toggleImageCancel() {
+        if (imgDeleteCancel.getImage() == deleteImage) {
+            imgDeleteCancel.setImage(cancelImage);
+            btnDelete.setText("Cancelar");
+            return;
+        }
+
+        if (imgDeleteCancel.getImage() == cancelImage) {
+            imgDeleteCancel.setImage(deleteImage);
+            btnDelete.setText("Eliminar");
+            disableFields();
+            clearFields();
+        }
+    }
+
+    private void toggleImage(String text) {
         if (imgCreateSave.getImage() == saveImage) {
             imgCreateSave.setImage(createImage);
-            btnSave.setText("Nuevo");
-            onSave();
+            btnSave.setText(text);
             return;
         }
         // Guardar
@@ -91,9 +133,11 @@ public abstract class GeneralController<M> implements Initializable {
     public void onSave() {
         try {
             if (areFieldsEmpty()) throw new Exception("Fields are empty");
-            getDao().save(getModel());
+            currentOperation.operate();
             clearFields();
             disableFields();
+            fetchData();
+//            btnSave.setText("Nuevo");
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -103,21 +147,24 @@ public abstract class GeneralController<M> implements Initializable {
     public void onDelete() {
         try {
             getDao().delete(getModelID());
-            clearFields(); // maybe not
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void onEdit() {
-        try {
-            if (areFieldsEmpty()) throw new Exception("Fields are empty");
-            getDao().update(getModel());
-            clearFields();
+            fetchData();
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+    }
+
+    public void onEdit() {
+        enableFields();
+        setFields(getSelectedModel());
+        if (btnSave.getText().equals("Guardar")) return;
+        toggleImage("Modificar");
+        toggleImageCancel();
+        currentOperation = () -> getDao().update(getModel());
+    }
+
+    protected M getSelectedModel() {
+        return tblModel.getSelectionModel().getSelectedItem();
     }
 
     protected void clearFields() {
@@ -156,6 +203,8 @@ public abstract class GeneralController<M> implements Initializable {
         this.fields = fields;
     }
 
+    protected abstract void setFields(M model);
+
     protected DAO<M> getDao() {
         return dao;
     }
@@ -165,6 +214,8 @@ public abstract class GeneralController<M> implements Initializable {
     protected abstract M getModel();
 
     protected abstract String getModelID();
+}
 
-
+interface Operation {
+    void operate() throws Exception;
 }

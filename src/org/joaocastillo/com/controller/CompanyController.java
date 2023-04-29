@@ -4,12 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.joaocastillo.com.bean.Companies;
 import org.joaocastillo.com.dao.ConnectionCompany;
 import org.joaocastillo.com.dao.DAO;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class CompanyController extends GeneralController<Companies> {
 
@@ -31,6 +35,40 @@ public class CompanyController extends GeneralController<Companies> {
     }
 
     @Override
+    protected List<TableColumn<Companies, ?>> createColumns() {
+        TableColumn<Companies, Integer> idCompanyColumn = new TableColumn<>("ID");
+        idCompanyColumn.setCellValueFactory(new PropertyValueFactory<>("idCompany"));
+
+        TableColumn<Companies, String> nameCompanyColumn = new TableColumn<>("Nombre");
+        nameCompanyColumn.setCellValueFactory(new PropertyValueFactory<>("nameCompany"));
+
+        TableColumn<Companies, String> addressCompanyColumn = new TableColumn<>("Dirección");
+        addressCompanyColumn.setCellValueFactory(new PropertyValueFactory<>("addressCompany"));
+
+        TableColumn<Companies, String> phoneCompanyColumn = new TableColumn<>("Teléfono");
+        phoneCompanyColumn.setCellValueFactory(new PropertyValueFactory<>("phoneCompany"));
+
+        List<TableColumn<Companies, ?>> columns = new ArrayList<TableColumn<Companies, ?>>() {{
+            add(idCompanyColumn);
+            add(nameCompanyColumn);
+            add(addressCompanyColumn);
+            add(phoneCompanyColumn);
+        }};
+
+        columns.forEach(column -> column.prefWidthProperty().bind(tblModel.widthProperty().divide(4)));
+
+        return columns;
+    }
+
+    @Override
+    protected void setFields(Companies model) {
+        getFields().get("idCompany").setText(String.valueOf(model.getIdCompany()));
+        getFields().get("nameCompany").setText(model.getNameCompany());
+        getFields().get("addressCompany").setText(model.getAddressCompany());
+        getFields().get("phoneCompany").setText(model.getPhoneCompany());
+    }
+
+    @Override
     protected void setDefaultFields() {
         setFields(new HashMap<String, TextField>() {{
             put("idCompany", txtIdCompany);
@@ -48,6 +86,7 @@ public class CompanyController extends GeneralController<Companies> {
 
     @Override
     protected String getModelID() {
-        return getFields().get("idCompany").getText();
+        if (getSelectedModel() == null) return null;
+        return String.valueOf(getSelectedModel().getIdCompany());
     }
 }

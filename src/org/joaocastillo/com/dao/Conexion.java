@@ -8,7 +8,7 @@ public class Conexion {
     private static Conexion instance;
     private Connection connection;
 
-    private boolean isDev = false;
+    private boolean isDev = true;
     private String URL_HOST = isDev ? "jdbc:mysql://containers-us-west-163.railway.app:7417" : "jdbc:mysql://localhost:3306";
     private String DATABASE = "DBTonysKinal2023";
     private String USER = "root";
