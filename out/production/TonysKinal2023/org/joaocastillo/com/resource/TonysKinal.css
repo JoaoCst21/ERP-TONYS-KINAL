@@ -1,0 +1,73 @@
+/*
+  Palette-color:
+
+  yellow: #ecdb04 
+  red: #eb2414
+  white: #e1e7ea
+  obscure-gray: #292f33
+  gray: #646464
+*/
+
+.menu-bar {
+  -fx-background-color: #121212;
+  -fx-opacity: 0.7;
+  -fx-border-width: 2.0;
+}
+
+.menu-bar .menu {
+  -fx-background-color: #121212;
+  -fx-padding: 10px;
+}
+
+.menu-bar .menu > .label {
+  -fx-font-family: "mononoki NF";
+  -fx-font-size: 14px;
+  -fx-text-fill: white;
+}
+
+.menu-bar .menu:hover {
+  -fx-background-color: #292f33;
+}
+
+.menu-bar .menu:hover > .label {
+  -fx-text-fill: #eb2414;
+}
+
+.menu-item {
+  -fx-padding: 7px;
+  -fx-background-color: white;
+}
+
+.menu-item:hover {
+  -fx-background-color: #eb2414;
+}
+
+.menu-item:hover .label {
+  -fx-text-fill: white;
+}
+
+.menu-item .label {
+  -fx-font-family: "mononoki NF";
+  -fx-font-size: 14px;
+  -fx-text-fill: #121212;
+}
+
+/* ------- */
+/* Buttons */
+/* ------- */
+
+.button-vbox {
+  -fx-background-color: #fff;
+  -fx-background-radius: 0px;
+  
+}
+
+.button-vbox:hover {
+  -fx-background-color: #eee;
+  -fx-text-fill: #292f33;
+}
+
+.button-vbox:pressed {
+  -fx-background-color: #292f33;
+  -fx-text-fill: white;
+}

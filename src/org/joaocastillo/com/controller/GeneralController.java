@@ -1,23 +1,24 @@
 package org.joaocastillo.com.controller;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import org.joaocastillo.com.dao.DAO;
 
 import javax.swing.*;
-import javax.xml.soap.Text;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class GeneralController<M> implements Initializable {
     private String fieldID;
@@ -29,6 +30,12 @@ public abstract class GeneralController<M> implements Initializable {
     private Button btnEdit;
     @FXML
     private Button btnReport;
+    @FXML
+    private Label lblTitle;
+
+    @FXML
+    public GridPane formModel;
+
 
     @FXML
     private ImageView imgCreateSave;
@@ -43,15 +50,21 @@ public abstract class GeneralController<M> implements Initializable {
     private HashMap<String, TextField> fields;
 
     private Operation currentOperation;
-    @FXML private ImageView imgDeleteCancel;
+    @FXML
+    private ImageView imgDeleteCancel;
     private Image deleteImage = new Image("/org/joaocastillo/com/image/delete.png");
     private Image cancelImage = new Image("/org/joaocastillo/com/image/cancel.png");
+    private String title;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        lblTitle.setText(this.title);
         imgCreateSave.setImage(createImage);
         imgDeleteCancel.setImage(deleteImage);
         setDefaultFields();
+        System.out.println(formModel);
+        System.out.println(tblModel);
+        setFormData();
         disableFields();
         try {
             // set the columns to the table
@@ -59,6 +72,37 @@ public abstract class GeneralController<M> implements Initializable {
             fetchData();
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private void setFormData() {
+        int iteration = 0;
+        int indexRow = 0;
+        int indexColumn = 0;
+
+        double width = formModel.getPrefWidth() / getMapFields().size();
+        double txtFieldsSizeAcc = width * (getMapFields().size() / 2);
+        double lblFieldsSizeAcc = txtFieldsSizeAcc / 2;
+        double padding = (width - (lblFieldsSizeAcc + txtFieldsSizeAcc)) / (getMapFields().size() - 1);
+
+        // set Space between label and textfield
+        formModel.setHgap(padding + width);
+
+        for (Map.Entry<String, String> entry : getMapFields().entrySet()) {
+
+            Label label = new Label(entry.getValue());
+            label.setPrefWidth(width / 2);
+            label.setStyle("-fx-font-weight: bold;");
+
+            getFields().get(entry.getKey()).setPrefWidth(width);
+            formModel.add(label, indexColumn, indexRow);
+            formModel.add(getFields().get(entry.getKey()), indexColumn + 1, indexRow);
+            if (iteration % 2 == 0) indexRow++;
+            else indexRow--;
+
+            iteration++;
+
+            if (iteration % 2 == 0) indexColumn += 2;
         }
     }
 
@@ -75,10 +119,11 @@ public abstract class GeneralController<M> implements Initializable {
         this.isAutoIncrement = false;
     }
 
-    public GeneralController(DAO<M> dao, boolean isAutoIncrement, String fieldID) {
+    public GeneralController(DAO<M> dao, boolean isAutoIncrement, String fieldID, String entityName) {
         this.dao = dao;
         this.isAutoIncrement = isAutoIncrement;
         this.fieldID = fieldID;
+        this.title = entityName;
     }
 
     public void onCreate() {
@@ -99,6 +144,7 @@ public abstract class GeneralController<M> implements Initializable {
         toggleImageCancel();
         toggleImage("Nuevo");
     }
+
     private void toggleImageCancel() {
         if (imgDeleteCancel.getImage() == deleteImage) {
             imgDeleteCancel.setImage(cancelImage);
@@ -209,11 +255,18 @@ public abstract class GeneralController<M> implements Initializable {
         return dao;
     }
 
-    protected abstract void setDefaultFields();
+    protected void setDefaultFields() {
+        setFields(new HashMap<>());
+        getMapFields().forEach((key, value) -> {
+            getFields().put(key, new TextField());
+        });
+    }
 
     protected abstract M getModel();
 
     protected abstract String getModelID();
+
+    protected abstract HashMap<String, String> getMapFields();
 }
 
 interface Operation {

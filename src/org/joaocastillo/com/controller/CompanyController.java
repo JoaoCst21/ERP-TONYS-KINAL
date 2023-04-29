@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import org.joaocastillo.com.bean.Companies;
 import org.joaocastillo.com.dao.ConnectionCompany;
 import org.joaocastillo.com.dao.DAO;
@@ -16,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CompanyController extends GeneralController<Companies> {
+/*
 
     @FXML
     private TextField txtIdCompany;
@@ -28,10 +30,11 @@ public class CompanyController extends GeneralController<Companies> {
 
     @FXML
     private TextField txtNameCompany;
+*/
 
     // Constructor
     public CompanyController() {
-        super(new DAO<Companies>(new ConnectionCompany(), "sp_insert_Companies(?,?,?)", "sp_select_Companies(?)", "sp_select_all_Companies()", "sp_update_Companies(?,?,?,?)", "sp_delete_Companies(?)"), true, "idCompany");
+        super(new DAO<Companies>(new ConnectionCompany(), "sp_insert_Companies(?,?,?)", "sp_select_Companies(?)", "sp_select_all_Companies()", "sp_update_Companies(?,?,?,?)", "sp_delete_Companies(?)"), true, "idCompany", "Empresas");
     }
 
     @Override
@@ -71,10 +74,10 @@ public class CompanyController extends GeneralController<Companies> {
     @Override
     protected void setDefaultFields() {
         setFields(new HashMap<String, TextField>() {{
-            put("idCompany", txtIdCompany);
-            put("nameCompany", txtNameCompany);
-            put("addressCompany", txtAddressCompany);
-            put("phoneCompany", txtPhoneCompany);
+            put("idCompany", new TextField());
+            put("nameCompany", new TextField());
+            put("addressCompany", new TextField());
+            put("phoneCompany", new TextField());
         }});
     }
 
@@ -88,5 +91,15 @@ public class CompanyController extends GeneralController<Companies> {
     protected String getModelID() {
         if (getSelectedModel() == null) return null;
         return String.valueOf(getSelectedModel().getIdCompany());
+    }
+
+    @Override
+    protected HashMap<String, String> getMapFields() {
+        return new HashMap<String, String>() {{
+            put("idCompany", "ID");
+            put("nameCompany", "Nombre");
+            put("addressCompany", "Dirección");
+            put("phoneCompany", "Teléfono");
+        }};
     }
 }

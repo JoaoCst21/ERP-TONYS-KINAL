@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.layout.GridPane?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0"
+            prefWidth="846.0" stylesheets="@../resource/TonysKinal.css" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.joaocastillo.com.controller.CompanyController">
+    <children>
+        <ImageView fitHeight="600.0" fitWidth="884.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../image/background-plantilla2-min.jpg"/>
+            </image>
+            <effect>
+                <BoxBlur height="0.0" width="0.0"/>
+            </effect>
+        </ImageView>
+        <AnchorPane prefHeight="48.0" prefWidth="849.0" style="-fx-background-color: #292f33;">
+            <children>
+                <HBox alignment="CENTER" layoutX="181.0" prefHeight="48.0" prefWidth="528.0">
+                    <children>
+                        <Button fx:id="btnSave" onMouseClicked="#onCreate" alignment="BASELINE_LEFT"
+                                mnemonicParsing="false" prefHeight="50.0"
+                                prefWidth="233.0" styleClass="button-vbox" text="Nuevo">
+                            <graphic>
+                                <ImageView fx:id="imgCreateSave" fitHeight="21.0" fitWidth="51.0" pickOnBounds="true"
+                                           preserveRatio="true">
+                                    <image>
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="Arial" size="13.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="btnDelete" onMouseClicked="#onCancel" alignment="BASELINE_LEFT"
+                                mnemonicParsing="false" prefHeight="50.0"
+                                prefWidth="233.0" styleClass="button-vbox" text=" Eliminar">
+                            <graphic>
+                                <ImageView fx:id="imgDeleteCancel" fitHeight="28.0" fitWidth="23.0" pickOnBounds="true"
+                                           preserveRatio="true">
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="Arial" size="13.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="btnEdit" onMouseClicked="#onEdit" alignment="BASELINE_LEFT"
+                                mnemonicParsing="false" prefHeight="50.0"
+                                prefWidth="233.0" styleClass="button-vbox" text=" Editar">
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../image/edit.png"/>
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="Arial" size="13.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="btnReport" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0"
+                                prefWidth="233.0" styleClass="button-vbox" text="Reporte">
+                            <font>
+                                <Font name="Arial" size="13.0"/>
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="36.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../image/report.png"/>
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+                <Label fx:id="lblTitle" alignment="CENTER" layoutX="-1.0" prefHeight="48.0" prefWidth="182.0"
+                       textFill="WHITE">
+                    <font>
+                        <Font name="Arial Black" size="18.0"/>
+                    </font>
+                </Label>
+                <ImageView fitHeight="36.0" fitWidth="30.0" layoutX="787.0" layoutY="8.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../image/home2.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <TableView fx:id="tblModel" layoutX="86.0" layoutY="173.0" prefHeight="323.0" prefWidth="684.0">
+        </TableView>
+        <AnchorPane layoutX="86.0" layoutY="69.0" prefHeight="48.0" prefWidth="684.0">
+            <children>
+                <GridPane fx:id="formModel" prefHeight="78.0" prefWidth="684.0">
+                </GridPane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
