@@ -3,15 +3,15 @@ package org.joaocastillo.com.bean;
 public class Products {
     // Attributes
     private int idProduct;
-    private String nameProduct;
-    private String descriptionProduct;
+    private String productName;
+    private int productQuantity;
 
     // Constructors
 
-    public Products(int idProduct, String nameProduct, String descriptionProduct) {
+    public Products(int idProduct, String productName, int productQuantity) {
         this.idProduct = idProduct;
-        this.nameProduct = nameProduct;
-        this.descriptionProduct = descriptionProduct;
+        this.productName = productName;
+        this.productQuantity = productQuantity;
     }
 
     // Getters
@@ -19,12 +19,12 @@ public class Products {
         return idProduct;
     }
 
-    public String getNameProduct() {
-        return nameProduct;
+    public String getProductName() {
+        return productName;
     }
 
-    public String getDescriptionProduct() {
-        return descriptionProduct;
+    public int getProductQuantity() {
+        return productQuantity;
     }
 
     // Setters
@@ -32,11 +32,11 @@ public class Products {
         this.idProduct = idProduct;
     }
 
-    public void setNameProduct(String nameProduct) {
-        this.nameProduct = nameProduct;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public void setDescriptionProduct(String descriptionProduct) {
-        this.descriptionProduct = descriptionProduct;
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
     }
 }

@@ -22,7 +22,7 @@
 .menu-bar .menu > .label {
   -fx-font-family: "mononoki NF";
   -fx-font-size: 14px;
-  -fx-text-fill: white;
+    -fx-text-fill: white;
 }
 
 .menu-bar .menu:hover {
@@ -30,7 +30,7 @@
 }
 
 .menu-bar .menu:hover > .label {
-  -fx-text-fill: #eb2414;
+    -fx-text-fill: #eb2414;
 }
 
 .menu-item {
@@ -43,13 +43,13 @@
 }
 
 .menu-item:hover .label {
-  -fx-text-fill: white;
+    -fx-text-fill: white;
 }
 
 .menu-item .label {
   -fx-font-family: "mononoki NF";
   -fx-font-size: 14px;
-  -fx-text-fill: #121212;
+    -fx-text-fill: #121212;
 }
 
 /* ------- */
@@ -64,7 +64,7 @@
 
 .button-vbox:hover {
   -fx-background-color: #eee;
-  -fx-text-fill: #292f33;
+    -fx-text-fill: #292f33;
 }
 
 .button-vbox:pressed {
