@@ -16,5 +16,16 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/schudt-javafx-datepicker-0.0.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/Downloads/schudt-javafx-datepicker-0.0.2.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

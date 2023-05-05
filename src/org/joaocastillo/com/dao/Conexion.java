@@ -8,11 +8,11 @@ public class Conexion {
     private static Conexion instance;
     private Connection connection;
 
-    private boolean isDev = true;
-    private String URL_HOST = isDev ? "jdbc:mysql://containers-us-west-163.railway.app:7417" : "jdbc:mysql://localhost:3306";
+    private boolean isProduction = false;
+    private String URL_HOST = isProduction ? "jdbc:mysql://containers-us-west-163.railway.app:7417" : "jdbc:mysql://localhost:3306";
     private String DATABASE = "DBTonysKinal2023";
     private String USER = "root";
-    private String PASSWORD = isDev ? "EAFkW5NszMgSxhMQ18xU" : "K$oport3Lab";
+    private String PASSWORD = isProduction ? "EAFkW5NszMgSxhMQ18xU" : "K$oport3Lab";
 
     // Constructor
     private Conexion() {

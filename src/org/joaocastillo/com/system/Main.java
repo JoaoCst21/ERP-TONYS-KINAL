@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.joaocastillo.com.dao.ConnectionProducts;
+import org.joaocastillo.com.view.components.BudgetComponent;
 import org.joaocastillo.com.view.components.CompanyComponent;
 import org.joaocastillo.com.view.components.DishTypeComponent;
 import org.joaocastillo.com.view.components.ProductsComponent;
@@ -20,7 +21,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = new ProductsComponent();
+//        Parent root = new ProductsComponent();
+        Parent root = new BudgetComponent();
 
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -3,13 +3,14 @@ package org.joaocastillo.com.view.components;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import org.joaocastillo.com.controller.CRUDOperation;
+import org.joaocastillo.com.controller.Field;
 import org.joaocastillo.com.controller.FormOperations;
 import org.joaocastillo.com.controller.LoadFXML;
 import org.joaocastillo.com.dao.DAO;
@@ -42,7 +43,7 @@ public abstract class GeneralModelComponent<M> extends AnchorPane implements Ini
 	@FXML
 	public ImageView imgDeleteCancel;
 	private DAO<M> dao;
-	private HashMap<String, TextField> fields;
+	private HashMap<String, Node> fields;
 	public UIOperation currentOperation;
 	private String title;
 	public String fieldID;
@@ -109,11 +110,11 @@ public abstract class GeneralModelComponent<M> extends AnchorPane implements Ini
 		return tblModel.getSelectionModel().getSelectedItem();
 	}
 
-	public HashMap<String, TextField> getFields() {
+	public HashMap<String, Node> getFields() {
 		return this.fields;
 	}
 
-	public void setFields(HashMap<String, TextField> fields) {
+	public void setFields(HashMap<String, Node> fields) {
 		this.fields = fields;
 	}
 
@@ -127,7 +128,7 @@ public abstract class GeneralModelComponent<M> extends AnchorPane implements Ini
 
 	public abstract String getModelID();
 
-	public abstract HashMap<String, String> getMapFields();
+	public abstract HashMap<String, Field> getMapFields();
 
 	protected abstract List<TableColumn<M, ?>> createColumns();
 }
