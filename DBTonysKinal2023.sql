@@ -41,7 +41,7 @@ create table Employees
     chefDegreeEmployee   int             not null,
     _idEmployeeType      int             not null,
 
-    foreign key FK_Employees_EmployeeType (_idEmployeeType) references EmployeeType (idEmployeeType)
+    foreign key FK_Employees_EmployeeType (_idEmployeeType) references EmployeeType (idEmployeeType) on delete cascade
 );
 
 create table Services
@@ -54,7 +54,7 @@ create table Services
     contactPhoneService varchar(150)    not null,
     _idCompany          int             not null,
 
-    foreign key FK_Services_Companies (_idCompany) references Companies (idCompany)
+    foreign key FK_Services_Companies (_idCompany) references Companies (idCompany) on delete cascade
 );
 
 create table Budgets
@@ -64,7 +64,7 @@ create table Budgets
     budgetAmount decimal(10, 2)  not null,
     _idCompany   int             not null,
 
-    foreign key FK_Budgets_Companies (_idCompany) references Companies (idCompany)
+    foreign key FK_Budgets_Companies (_idCompany) references Companies (idCompany) on delete cascade
 );
 
 create table Dishes
@@ -76,7 +76,7 @@ create table Dishes
     dishPrice       decimal(10, 2)  not null,
     _idDishType     int             not null,
 
-    foreign key FK_Dishes_DishType (_idDishType) references DishType (idDishType)
+    foreign key FK_Dishes_DishType (_idDishType) references DishType (idDishType) on delete cascade
 );
 
 create table Products_has_Dishes
@@ -85,8 +85,8 @@ create table Products_has_Dishes
     _idDish       int             not null,
     idProductDish int             not null,
 
-    foreign key FK_Products_has_Dishes_Products (_idProduct) references Products (idProduct),
-    foreign key FK_Products_has_Dishes_Dishes (_idDish) references Dishes (idDish)
+    foreign key FK_Products_has_Dishes_Products (_idProduct) references Products (idProduct) on delete cascade,
+    foreign key FK_Products_has_Dishes_Dishes (_idDish) references Dishes (idDish) on delete cascade
 );
 
 create table Services_has_Dishes
@@ -95,8 +95,8 @@ create table Services_has_Dishes
     _idDish       int             not null,
     idServiceDish int             not null,
 
-    foreign key FK_Services_has_Dishes_Services (_idService) references Services (idService),
-    foreign key FK_Services_has_Dishes_Dishes (_idDish) references Dishes (idDish)
+    foreign key FK_Services_has_Dishes_Services (_idService) references Services (idService) on delete cascade,
+    foreign key FK_Services_has_Dishes_Dishes (_idDish) references Dishes (idDish) on delete cascade
 );
 
 create table Services_has_Employees
@@ -108,8 +108,8 @@ create table Services_has_Employees
     eventTime         time            not null,
     eventLocation     varchar(150)    not null,
 
-    foreign key FK_Services_has_Employees_Services (_idService) references Services (idService),
-    foreign key FK_Services_has_Employees_Employees (_idEmployee) references Employees (idEmployee)
+    foreign key FK_Services_has_Employees_Services (_idService) references Services (idService) on delete cascade,
+    foreign key FK_Services_has_Employees_Employees (_idEmployee) references Employees (idEmployee) on delete cascade
 );
 
 
