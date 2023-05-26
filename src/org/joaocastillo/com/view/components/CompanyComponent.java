@@ -5,9 +5,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.joaocastillo.com.bean.Companies;
 import org.joaocastillo.com.controller.Field;
-import org.joaocastillo.com.dao.CompanyDAOFactory;
-import org.joaocastillo.com.dao.ConnectionCompany;
-import org.joaocastillo.com.dao.DAO;
+import org.joaocastillo.com.dao.factory.CompanyDAOFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;

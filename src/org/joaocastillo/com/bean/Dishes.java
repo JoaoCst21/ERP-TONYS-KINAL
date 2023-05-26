@@ -4,17 +4,20 @@ public class Dishes {
     // Attributes
     private int idDish;
     private int quantity;
-    private int dishName;
+    private String dishName;
     private String descriptionDish;
     private double dishPrice;
+    private int _idDishType;
 
     // Constructors
-    public Dishes(int idDish, int quantity, int dishName, String descriptionDish, double dishPrice) {
+
+    public Dishes(int idDish, int quantity, String dishName, String descriptionDish, double dishPrice, int _idDishType) {
         this.idDish = idDish;
         this.quantity = quantity;
         this.dishName = dishName;
         this.descriptionDish = descriptionDish;
         this.dishPrice = dishPrice;
+        this._idDishType = _idDishType;
     }
 
     // Getters
@@ -26,7 +29,7 @@ public class Dishes {
         return quantity;
     }
 
-    public int getDishName() {
+    public String getDishName() {
         return dishName;
     }
 
@@ -38,6 +41,10 @@ public class Dishes {
         return dishPrice;
     }
 
+    public int get_idDishType() {
+        return _idDishType;
+    }
+
     // Setters
     public void setIdDish(int idDish) {
         this.idDish = idDish;
@@ -47,7 +54,7 @@ public class Dishes {
         this.quantity = quantity;
     }
 
-    public void setDishName(int dishName) {
+    public void setDishName(String dishName) {
         this.dishName = dishName;
     }
 
@@ -57,5 +64,9 @@ public class Dishes {
 
     public void setDishPrice(double dishPrice) {
         this.dishPrice = dishPrice;
+    }
+
+    public void set_idDishType(int _idDishType) {
+        this._idDishType = _idDishType;
     }
 }

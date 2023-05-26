@@ -30,6 +30,7 @@
                         <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Tipos de Platos"/>
                         <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Tipos de Platos"/>
                         <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Presupuestos"/>
+                        <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Platos"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Reportes">

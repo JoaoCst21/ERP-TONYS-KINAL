@@ -1,6 +1,8 @@
-package org.joaocastillo.com.dao;
+package org.joaocastillo.com.dao.factory;
 
 import org.joaocastillo.com.bean.Companies;
+import org.joaocastillo.com.dao.ConnectionCompany;
+import org.joaocastillo.com.dao.DAO;
 
 public class CompanyDAOFactory {
     public static DAO<Companies> getDAO() {

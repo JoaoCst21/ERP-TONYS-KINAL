@@ -1,6 +1,9 @@
-drop database if exists DBTonysKinal2023;
-create database DBTonysKinal2023;
-use DBTonysKinal2023;
+drop
+    database if exists DBTonysKinal2023;
+create
+    database DBTonysKinal2023;
+use
+    DBTonysKinal2023;
 
 create table EmployeeType
 (
@@ -113,7 +116,8 @@ create table Services_has_Employees
 );
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_insert_EmployeeType(in sp_descriptionEmployeeType varchar(150))
 begin
     insert into EmployeeType(descriptionEmployeeType)
@@ -122,7 +126,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_update_EmployeeType(in sp_idEmployeeType int, in sp_descriptionEmployeeType varchar(150))
 begin
     update EmployeeType
@@ -133,7 +138,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_delete_EmployeeType(in sp_idEmployeeType int)
 begin
     delete
@@ -143,7 +149,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_EmployeeType(in sp_idEmployeeType int)
 begin
     select E.idEmployeeType, E.descriptionEmployeeType
@@ -153,10 +160,12 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_all_EmployeeType()
 begin
-    select E.idEmployeeType, E.descriptionEmployeeType from EmployeeType E;
+    select E.idEmployeeType, E.descriptionEmployeeType
+    from EmployeeType E;
 end$$
 delimiter ;
 
@@ -172,7 +181,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_update_Companies(in sp_idCompany int, in sp_nameCompany varchar(150),
                                      in sp_addressCompany varchar(150), in sp_phoneCompany varchar(150))
 begin
@@ -186,7 +196,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_delete_Companies(in sp_idCompany int)
 begin
     delete
@@ -196,7 +207,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_Companies(in sp_idCompany int)
 begin
     select C.idCompany, C.nameCompany, C.addressCompany, C.phoneCompany
@@ -206,10 +218,12 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_all_Companies()
 begin
-    select C.idCompany, C.nameCompany, C.addressCompany, C.phoneCompany from Companies C;
+    select C.idCompany, C.nameCompany, C.addressCompany, C.phoneCompany
+    from Companies C;
 end$$
 delimiter ;
 
@@ -229,7 +243,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_update_Employees(in sp_idEmployee int, in sp_employeeNumber int,
                                      in sp_firstNamesEmployee varchar(150), in sp_lastNamesEmployee varchar(150),
                                      in sp_addressEmployee varchar(150), in sp_contactPhoneEmployee varchar(150),
@@ -249,7 +264,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_delete_Employees(in sp_idEmployee int)
 begin
     delete
@@ -259,7 +275,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_Employees(in sp_idEmployee int)
 begin
     select E.idEmployee,
@@ -276,7 +293,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_all_Employees()
 begin
     select E.idEmployee,
@@ -302,7 +320,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_update_DishType(in sp_idDishType int, in sp_descriptionDishType varchar(150))
 begin
     update DishType
@@ -313,7 +332,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_delete_DishType(in sp_idDishType int)
 begin
     delete
@@ -323,7 +343,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_DishType(in sp_idDishType int)
 begin
     select D.idDishType, D.descriptionDishType
@@ -333,10 +354,12 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_all_DishType()
 begin
-    select D.idDishType, D.descriptionDishType from DishType D;
+    select D.idDishType, D.descriptionDishType
+    from DishType D;
 end$$
 delimiter ;
 
@@ -351,7 +374,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_update_Products(in sp_idProduct int, in sp_productName varchar(150), in sp_productQuantity int)
 begin
     update Products
@@ -363,7 +387,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_delete_Products(in sp_idProduct int)
 begin
     delete
@@ -373,7 +398,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_Products(in sp_idProduct int)
 begin
     select P.idProduct, P.productName, P.productQuantity
@@ -383,10 +409,12 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_all_Products()
 begin
-    select P.idProduct, P.productName, P.productQuantity from Products P;
+    select P.idProduct, P.productName, P.productQuantity
+    from Products P;
 end$$
 delimiter ;
 
@@ -403,7 +431,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_update_Services(in sp_idService int, in sp_dateService date, in sp_typeService varchar(150),
                                     in sp_timeService time, in sp_locationService varchar(150),
                                     in sp_contactPhoneService varchar(150), in sp__idCompany int)
@@ -421,7 +450,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_delete_Services(in sp_idService int)
 begin
     delete
@@ -431,7 +461,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_Services(in sp_idService int)
 begin
     select S.idService,
@@ -447,7 +478,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_all_Services()
 begin
     select S.idService,
@@ -472,7 +504,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_update_Budgets(in sp_idBudget int, in sp_requestDate date, in sp_budgetAmount decimal(10, 2),
                                    in sp__idCompany int)
 begin
@@ -486,7 +519,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_delete_Budgets(in sp_idBudget int)
 begin
     delete
@@ -496,7 +530,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_Budgets(in sp_idBudget int)
 begin
     select B.idBudget, B.requestDate, B.budgetAmount, B._idCompany
@@ -506,17 +541,20 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_all_Budgets()
 begin
-    select B.idBudget, B.requestDate, B.budgetAmount, B._idCompany from Budgets B;
+    select B.idBudget, B.requestDate, B.budgetAmount, B._idCompany
+    from Budgets B;
 end$$
 delimiter ;
 
 ######################################################################################################################
 
 delimiter $$
-create procedure sp_insert_Dishes(in sp_quantity int, in sp_dishName varchar(150), in sp_dishDescription decimal(10, 2),
+create procedure sp_insert_Dishes(in sp_quantity int, in sp_dishName varchar(150),
+                                  in sp_dishDescription varchar(150),
                                   in sp_dishPrice decimal(10, 2), in sp__idDishType int)
 begin
     insert into Dishes(quantity, dishName, dishDescription, dishPrice, _idDishType)
@@ -525,7 +563,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_update_Dishes(in sp_idDish int, in sp_quantity int, in sp_dishName varchar(150),
                                   in sp_dishDescription decimal(10, 2), in sp_dishPrice decimal(10, 2),
                                   in sp__idDishType int)
@@ -542,7 +581,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_delete_Dishes(in sp_idDish int)
 begin
     delete
@@ -552,7 +592,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_Dishes(in sp_idDish int)
 begin
     select D.idDish, D.quantity, D.dishName, D.dishDescription, D.dishPrice, D._idDishType
@@ -562,10 +603,12 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_all_Dishes()
 begin
-    select D.idDish, D.quantity, D.dishName, D.dishDescription, D.dishPrice, D._idDishType from Dishes D;
+    select D.idDish, D.quantity, D.dishName, D.dishDescription, D.dishPrice, D._idDishType
+    from Dishes D;
 end$$
 delimiter ;
 
@@ -580,7 +623,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_update_Products_has_Dishes(in sp__idProduct int, in sp__idDish int, in sp_idProductDish int)
 begin
     update Products_has_Dishes
@@ -592,7 +636,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_delete_Products_has_Dishes(in sp__idProduct int)
 begin
     delete
@@ -602,7 +647,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_Products_has_Dishes(in sp__idProduct int)
 begin
     select P._idProduct, P._idDish, P.idProductDish
@@ -612,10 +658,12 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_all_Products_has_Dishes()
 begin
-    select P._idProduct, P._idDish, P.idProductDish from Products_has_Dishes P;
+    select P._idProduct, P._idDish, P.idProductDish
+    from Products_has_Dishes P;
 end$$
 delimiter ;
 
@@ -630,7 +678,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_update_Services_has_Dishes(in sp__idService int, in sp__idDish int, in sp_idServiceDish int)
 begin
     update Services_has_Dishes
@@ -642,7 +691,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_delete_Services_has_Dishes(in sp__idService int)
 begin
     delete
@@ -652,7 +702,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_Services_has_Dishes(in sp__idService int)
 begin
     select S._idService, S._idDish, S.idServiceDish
@@ -662,10 +713,12 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_all_Services_has_Dishes()
 begin
-    select S._idService, S._idDish, S.idServiceDish from Services_has_Dishes S;
+    select S._idService, S._idDish, S.idServiceDish
+    from Services_has_Dishes S;
 end$$
 delimiter ;
 
@@ -682,7 +735,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_update_Services_has_Employees(in sp__idService int, in sp__idEmployee int,
                                                   in sp_idServiceEmployee int, in sp_eventDate date,
                                                   in sp_eventTime time, in sp_eventLocation varchar(150))
@@ -699,7 +753,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_delete_Services_has_Employees(in sp__idService int)
 begin
     delete
@@ -709,7 +764,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_Services_has_Employees(in sp__idService int)
 begin
     select S._idService, S._idEmployee, S.idServiceEmployee, S.eventDate, S.eventTime, S.eventLocation
@@ -719,7 +775,8 @@ end$$
 delimiter ;
 
 
-delimiter $$
+delimiter
+$$
 create procedure sp_select_all_Services_has_Employees()
 begin
     select S._idService, S._idEmployee, S.idServiceEmployee, S.eventDate, S.eventTime, S.eventLocation
@@ -745,3 +802,8 @@ call sp_insert_EmployeeType('Bartender');
 call sp_insert_Companies('Catering', 'Guatemala City', '12345678');
 call sp_insert_Companies('Catering', 'Guatemala City', '12345678');
 call sp_insert_Companies('Catering', 'Guatemala City', '12345678');
+
+
+
+
+

@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.joaocastillo.com.bean.Budgets;
 import org.joaocastillo.com.controller.Field;
-import org.joaocastillo.com.dao.CompanyDAOFactory;
+import org.joaocastillo.com.dao.factory.CompanyDAOFactory;
 import org.joaocastillo.com.dao.ConnectionBudget;
 import org.joaocastillo.com.dao.DAO;
 
