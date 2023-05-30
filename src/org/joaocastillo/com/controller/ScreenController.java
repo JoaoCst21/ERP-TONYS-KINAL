@@ -28,6 +28,9 @@ public class ScreenController {
             put("Tipos de Empleados", () -> new EmployeeTypeComponent());
             put("Presupuestos", () -> new BudgetComponent());
             put("Platos", () -> new DishComponent());
+            put("Productos tiene platos", () -> new Products_has_DishesComponent());
+            put("Servicios tiene platos", () -> new DishComponent());
+            put("Servivicios tiene empleados", () -> new DishComponent());
             put("Programador", () -> {
                 try {
                     return FXMLLoader.load(this.getClass().getResource("../view/ProgramadorView.fxml"));

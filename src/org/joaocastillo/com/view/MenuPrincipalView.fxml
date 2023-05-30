@@ -12,7 +12,7 @@
             minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="601.0"
             xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.joaocastillo.com.controller.PrincipalMenuController"
-            style="-fx-background-image: url('../../../../../../TonysKinal2023/src/org/joaocastillo/com/image/background-plantilla2-min.jpg');"
+            style="-fx-background-image: url('../image/background-plantilla2-min.jpg');"
 >
     <children>
         <ImageView fitHeight="321.0" fitWidth="296.0" layoutX="156.0" layoutY="45.0" pickOnBounds="true"
@@ -41,6 +41,13 @@
                 <Menu mnemonicParsing="false" text="?">
                     <items>
                         <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Programador"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Los has">
+                    <items>
+                        <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Productos tiene platos"/>
+                        <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Servicios tiene platos"/>
+                        <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Servivicios tiene empleados"/>
                     </items>
                 </Menu>
             </menus>

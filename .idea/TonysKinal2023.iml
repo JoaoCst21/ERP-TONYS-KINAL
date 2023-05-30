@@ -10,7 +10,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/mysql-connector-java-8.0.30.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib-idea/mysql-connector-java-5.1.47-bin.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,12 +19,21 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/schudt-javafx-datepicker-0.0.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib-idea/schudt-javafx-datepicker-0.0.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/Downloads/schudt-javafx-datepicker-0.0.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib-idea/schudt-javafx-datepicker-0.0.2.jar!/" />
         </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib-idea/mysql-connector-java-8.0.30.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
       </library>
     </orderEntry>
   </component>
