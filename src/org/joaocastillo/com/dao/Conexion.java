@@ -12,7 +12,7 @@ public class Conexion {
     private String URL_HOST = isProduction ? "jdbc:mysql://containers-us-west-163.railway.app:7417" : "jdbc:mysql://localhost:3306";
     private String DATABASE = "DBTonysKinal2023";
     private String USER = "root";
-    private String PASSWORD = isProduction ? "EAFkW5NszMgSxhMQ18xU" : "admin"; // "K$oport3Lab" : "root"; - "admin" : "root";
+    private String PASSWORD = isProduction ? "EAFkW5NszMgSxhMQ18xU" : "K$oport3Lab"; // "K$oport3Lab" : "root"; - "admin" : "root";
 
     // Constructor
     private Conexion() {

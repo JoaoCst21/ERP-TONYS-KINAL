@@ -75,7 +75,7 @@ create table Dishes
     idDish          int primary key not null auto_increment,
     quantity        int             not null,
     dishName        varchar(150)    not null,
-    dishDescription decimal(10, 2)  not null,
+    dishDescription varchar(150)    not null,
     dishPrice       decimal(10, 2)  not null,
     _idDishType     int             not null,
 
@@ -84,9 +84,9 @@ create table Dishes
 
 create table Products_has_Dishes
 (
-    idProductDish int primary key not null,
-    _idProduct    int             not null,
-    _idDish       int             not null,
+    idProductDish int primary key auto_increment not null,
+    _idProduct    int                            not null,
+    _idDish       int                            not null,
 
     foreign key FK_Products_has_Dishes_Products (_idProduct) references Products (idProduct) on delete cascade,
     foreign key FK_Products_has_Dishes_Dishes (_idDish) references Dishes (idDish) on delete cascade
@@ -94,9 +94,9 @@ create table Products_has_Dishes
 
 create table Services_has_Dishes
 (
-    idServiceDish int primary key not null,
-    _idService    int             not null,
-    _idDish       int             not null,
+    idServiceDish int primary key auto_increment not null,
+    _idService    int                            not null,
+    _idDish       int                            not null,
 
     foreign key FK_Services_has_Dishes_Services (_idService) references Services (idService) on delete cascade,
     foreign key FK_Services_has_Dishes_Dishes (_idDish) references Dishes (idDish) on delete cascade
@@ -104,15 +104,30 @@ create table Services_has_Dishes
 
 create table Services_has_Employees
 (
-    idServiceEmployee int primary key not null,
-    _idEmployee       int             not null,
-    _idService        int             not null,
-    eventDate         date            not null,
-    eventTime         time            not null,
-    eventLocation     varchar(150)    not null,
+    idServiceEmployee int primary key auto_increment not null,
+    _idEmployee       int                            not null,
+    _idService        int                            not null,
+    eventDate         date                           not null,
+    eventTime         time                           not null,
+    eventLocation     varchar(150)                   not null,
 
     foreign key FK_Services_has_Employees_Services (_idService) references Services (idService) on delete cascade,
     foreign key FK_Services_has_Employees_Employees (_idEmployee) references Employees (idEmployee) on delete cascade
+);
+
+create table User
+(
+    idUser       int primary key not null auto_increment,
+    userName     varchar(150)    not null,
+    userPassword varchar(150)    not null
+);
+
+create table Login
+(
+    idLogin int primary key not null auto_increment,
+    _idUser int             not null,
+
+    foreign key FK_Login_User (_idUser) references User (idUser) on delete cascade
 );
 
 delimiter $$
@@ -518,7 +533,7 @@ delimiter ;
 ######################################################################################################################
 
 delimiter $$
-create procedure sp_insert_Dishes(in sp_quantity int, in sp_dishName varchar(150), in sp_dishDescription decimal(10, 2),
+create procedure sp_insert_Dishes(in sp_quantity int, in sp_dishName varchar(150), in sp_dishDescription varchar(150),
                                   in sp_dishPrice decimal(10, 2), in sp__idDishType int)
 begin
     insert into Dishes(quantity, dishName, dishDescription, dishPrice, _idDishType)
@@ -529,7 +544,7 @@ delimiter ;
 
 delimiter $$
 create procedure sp_update_Dishes(in sp_idDish int, in sp_quantity int, in sp_dishName varchar(150),
-                                  in sp_dishDescription decimal(10, 2), in sp_dishPrice decimal(10, 2),
+                                  in sp_dishDescription varchar(150), in sp_dishPrice decimal(10, 2),
                                   in sp__idDishType int)
 begin
     update Dishes
@@ -725,6 +740,56 @@ create procedure sp_select_all_Services_has_Employees()
 begin
     select S.idServiceEmployee, S._idService, S._idEmployee, S.eventDate, S.eventTime, S.eventLocation
     from Services_has_Employees S;
+end$$
+delimiter ;
+
+######################################################################################################################
+
+delimiter $$
+create procedure sp_insert_User(in sp_userName varchar(150), in sp_userPassword varchar(150))
+begin
+    insert into User(userName, userPassword)
+    values (sp_userName, sp_userPassword);
+end$$
+delimiter ;
+
+
+delimiter $$
+create procedure sp_update_User(in sp_idUser int, in sp_userName varchar(150), in sp_userPassword varchar(150))
+begin
+    update User
+    set idUser       = sp_idUser,
+        userName     = sp_userName,
+        userPassword = sp_userPassword
+    where idUser = sp_idUser;
+end$$
+delimiter ;
+
+
+delimiter $$
+create procedure sp_delete_User(in sp_idUser int)
+begin
+    delete
+    from User
+    where idUser = sp_idUser;
+end$$
+delimiter ;
+
+
+delimiter $$
+create procedure sp_select_User(in sp_idUser int)
+begin
+    select U.idUser, U.userName, U.userPassword
+    from User U
+    where idUser = sp_idUser;
+end$$
+delimiter ;
+
+
+delimiter $$
+create procedure sp_select_all_User()
+begin
+    select U.idUser, U.userName, U.userPassword from User U;
 end$$
 delimiter ;
 

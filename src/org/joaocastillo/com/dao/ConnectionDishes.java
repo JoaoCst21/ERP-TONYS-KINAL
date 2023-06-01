@@ -14,11 +14,11 @@ public class ConnectionDishes implements IConnection<Dishes> {
         int idDish = resultSet.getInt("idDish");
         int quantity = resultSet.getInt("quantity");
         String dishName = resultSet.getString("dishName");
-        String descriptionDish = resultSet.getString("descriptionDish");
+        String dishDescription = resultSet.getString("dishDescription");
         double dishPrice = resultSet.getDouble("dishPrice");
         int _idDishType = resultSet.getInt("_idDishType");
 
-        return new Dishes(idDish, quantity, dishName, descriptionDish, dishPrice, _idDishType);
+        return new Dishes(idDish, quantity, dishName, dishDescription, dishPrice, _idDishType);
     }
 
     @Override
@@ -33,6 +33,7 @@ public class ConnectionDishes implements IConnection<Dishes> {
 
     @Override
     public void setProcedureParamsCreate(PreparedStatement sp, Dishes model) throws SQLException {
+        System.out.println(model.getDescriptionDish());
         sp.setInt(1, model.getQuantity());
         sp.setString(2, model.getDishName());
         sp.setString(3, model.getDescriptionDish());

@@ -39,7 +39,7 @@ public class DishComponent extends GeneralModelComponent<Dishes> {
         ((TextField) getFields().get("idDish")).setText(String.valueOf(model.getIdDish()));
         ((TextField) getFields().get("quantity")).setText(String.valueOf(model.getQuantity()));
         ((TextField) getFields().get("dishName")).setText(model.getDishName());
-        ((TextField) getFields().get("descriptionDish")).setText(model.getDescriptionDish());
+        ((TextField) getFields().get("dishDescription")).setText(model.getDescriptionDish());
         ((TextField) getFields().get("dishPrice")).setText(String.valueOf(model.getDishPrice()));
         ((ComboBox) getFields().get("_idDishType")).setValue(model.get_idDishType());
     }
@@ -48,7 +48,7 @@ public class DishComponent extends GeneralModelComponent<Dishes> {
     public Dishes getModel() {
         int idDish = ((TextField) getFields().get("idDish")).getText().isEmpty() ? -1 : Integer.parseInt(((TextField) getFields().get("idDish")).getText());
 
-        return new Dishes(idDish, Integer.parseInt(((TextField) getFields().get("quantity")).getText()), ((TextField) getFields().get("dishName")).getText(), ((TextField) getFields().get("descriptionDish")).getText(), Double.parseDouble(((TextField) getFields().get("dishPrice")).getText()), Integer.parseInt(((ComboBox) getFields().get("_idDishType")).getSelectionModel().getSelectedItem().toString().charAt(0) + ""));
+        return new Dishes(idDish, Integer.parseInt(((TextField) getFields().get("quantity")).getText()), ((TextField) getFields().get("dishName")).getText(), ((TextField) getFields().get("dishDescription")).getText(), Double.parseDouble(((TextField) getFields().get("dishPrice")).getText()), Integer.parseInt(((ComboBox) getFields().get("_idDishType")).getSelectionModel().getSelectedItem().toString().charAt(0) + ""));
     }
 
     @Override
@@ -63,7 +63,7 @@ public class DishComponent extends GeneralModelComponent<Dishes> {
             put("idDish", new Field("ID", "input"));
             put("quantity", new Field("Cantidad", "input"));
             put("dishName", new Field("Nombre", "input"));
-            put("descriptionDish", new Field("Descripción", "input"));
+            put("dishDescription", new Field("Descripción", "input"));
             put("dishPrice", new Field("Precio", "input"));
             put("_idDishType", new Field("Tipo de plato", "combobox"));
         }};
@@ -80,8 +80,8 @@ public class DishComponent extends GeneralModelComponent<Dishes> {
         TableColumn<Dishes, String> dishNameColumn = new TableColumn<>("Nombre");
         dishNameColumn.setCellValueFactory(new PropertyValueFactory<>("dishName"));
 
-        TableColumn<Dishes, String> descriptionDishColumn = new TableColumn<>("Descripción");
-        descriptionDishColumn.setCellValueFactory(new PropertyValueFactory<>("descriptionDish"));
+        TableColumn<Dishes, String> dishDescriptionColumn = new TableColumn<>("Descripción");
+        dishDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("dishDescription"));
 
         TableColumn<Dishes, Double> dishPriceColumn = new TableColumn<>("Precio");
         dishPriceColumn.setCellValueFactory(new PropertyValueFactory<>("dishPrice"));
@@ -93,7 +93,7 @@ public class DishComponent extends GeneralModelComponent<Dishes> {
             add(idDishColumn);
             add(quantityColumn);
             add(dishNameColumn);
-            add(descriptionDishColumn);
+            add(dishDescriptionColumn);
             add(dishPriceColumn);
             add(_idDishTypeColumn);
         }};
