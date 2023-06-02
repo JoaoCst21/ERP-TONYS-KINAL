@@ -12,6 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.joaocastillo.com.controller.*;
 import org.joaocastillo.com.dao.DAO;
+import org.joaocastillo.com.report.GenerateReport;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -75,6 +76,8 @@ public abstract class GeneralModelComponent<M> extends AnchorPane implements Ini
         btnSave.setOnMouseClicked(event -> crudOperations.onCreate());
         btnDelete.setOnMouseClicked(event -> crudOperations.onCancel());
         btnEdit.setOnMouseClicked(event -> crudOperations.onEdit());
+        btnReport.setOnMouseClicked(vent -> GenerateReport.mostrarReporte(this.title, "Reporte de " + this.title,
+                new HashMap<>()));
         imgCreateSave.setImage(createImage);
         imgDeleteCancel.setImage(deleteImage);
         formOperations.setDefaultFields();
