@@ -12,6 +12,8 @@ create table EmployeeType
 );
 
 create table Companies
+
+
 (
     idCompany      int primary key not null auto_increment,
     nameCompany    varchar(150)    not null,
@@ -811,6 +813,25 @@ call sp_insert_EmployeeType('Bartender');
 call sp_insert_Companies('Catering', 'Guatemala City', '12345678');
 call sp_insert_Companies('Catering', 'Guatemala City', '12345678');
 call sp_insert_Companies('Catering', 'Guatemala City', '12345678');
+
+delimiter $$
+create procedure sp_master_report(in sp_idCompany int)
+begin
+    select *
+    from Companies C
+             inner join Budgets B on C.idCompany = B._idCompany
+             inner join Services S on C.idCompany = S._idCompany
+             inner join Services_has_Dishes ShD on S.idService = ShD._idService
+             inner join Dishes D on ShD._idDish = D.idDish
+             inner join DishType DT on D._idDishType = DT.idDishType
+             inner join Products_has_Dishes PhD on D.idDish = PhD._idDish
+             inner join Products P on PhD._idProduct = P.idProduct
+             inner join Services_has_Employees ShE on S.idService = ShE._idService
+             inner join Employees E on ShE._idEmployee = E.idEmployee
+             inner join EmployeeType ET on E._idEmployeeType = ET.idEmployeeType
+    where C.idCompany = sp_idCompany;
+end $$
+delimiter ;
 
 
 
