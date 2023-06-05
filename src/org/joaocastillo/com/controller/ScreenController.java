@@ -13,25 +13,26 @@ import java.util.HashMap;
 public class ScreenController {
     Parent currentScreen;
     Stage currentStage;
-    private HashMap<String, ScreenChanger> screenMap = new HashMap<String, ScreenChanger>() {
+
+    private HashMap<Pantallas, ScreenChanger> screenMap = new HashMap<Pantallas, ScreenChanger>() {
         {
-            put("Menu", () -> {
+            put(Pantallas.MENU, () -> {
                 try {
                     return FXMLLoader.load(this.getClass().getResource("/org/joaocastillo/com/view/MenuPrincipalView.fxml"));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             });
-            put("Empresas", () -> new CompanyComponent());
-            put("Productos", () -> new ProductsComponent());
-            put("Tipos de Platos", () -> new DishTypeComponent());
-            put("Tipos de Empleados", () -> new EmployeeTypeComponent());
-            put("Presupuestos", () -> new BudgetComponent());
-            put("Platos", () -> new DishComponent());
-            put("Productos tiene platos", () -> new Products_has_DishesComponent());
-            put("Servicios tiene platos", () -> new DishComponent());
-            put("Servivicios tiene empleados", () -> new DishComponent());
-            put("Programador", () -> {
+            put(Pantallas.EMPRESAS, () -> new CompanyComponent());
+            put(Pantallas.PRODUCTOS, () -> new ProductsComponent());
+            put(Pantallas.TIPOS_DE_PLATOS, () -> new DishTypeComponent());
+            put(Pantallas.TIPOS_DE_EMPLEADOS, () -> new EmployeeTypeComponent());
+            put(Pantallas.PRESUPUESTOS, () -> new BudgetComponent());
+            put(Pantallas.PLATOS, () -> new DishComponent());
+            put(Pantallas.PRODUCTOS_TIENE_PLATOS, () -> new Products_has_DishesComponent());
+            put(Pantallas.SERVICIOS_TIENE_PLATOS, () -> new DishComponent());
+            put(Pantallas.SERVICIVIOS_TIENE_EMPLEADOS, () -> new DishComponent());
+            put(Pantallas.PROGRAMADOR, () -> {
                 try {
                     return FXMLLoader.load(this.getClass().getResource("../view/ProgramadorView.fxml"));
                 } catch (IOException e) {
@@ -53,19 +54,23 @@ public class ScreenController {
     private ScreenController() {
     }
 
-    public void activate(String name) {
+    public void activate(Pantallas pantallas) {
         if (this.main == null) {
-            this.main = new Scene(screenMap.get(name).changeScreen());
+            this.main = new Scene(screenMap.get(pantallas).changeScreen());
         }
         if (currentScreen != null) {
             currentScreen.setDisable(true);
         }
-        Parent root = screenMap.get(name).changeScreen();
+        Parent root = screenMap.get(pantallas).changeScreen();
         main.setRoot(root);
         currentScreen = root;
         currentStage.setScene(this.main);
         /*stage.setScene();
         stage.show();*/
+    }
+
+    public void activate(String name) {
+       activate(Pantallas.valueOf(name.replace(' ', '_').toUpperCase()));
     }
 
     public Scene getMain() {

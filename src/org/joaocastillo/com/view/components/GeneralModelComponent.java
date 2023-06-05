@@ -73,11 +73,15 @@ public abstract class GeneralModelComponent<M> extends AnchorPane implements Ini
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(System.getProperty("user.dir").replaceAll("\\\\", "\\\\\\\\"));
         btnSave.setOnMouseClicked(event -> crudOperations.onCreate());
         btnDelete.setOnMouseClicked(event -> crudOperations.onCancel());
         btnEdit.setOnMouseClicked(event -> crudOperations.onEdit());
         btnReport.setOnMouseClicked(vent -> GenerateReport.mostrarReporte(this.title, "Reporte de " + this.title,
-                new HashMap<>()));
+                new HashMap<String, String>() {{
+                    // replace \ with \\ to avoid errors
+                    put("baseDir", System.getProperty("user.dir").replaceAll("\\\\", "\\\\\\\\"));
+                }}));
         imgCreateSave.setImage(createImage);
         imgDeleteCancel.setImage(deleteImage);
         formOperations.setDefaultFields();
