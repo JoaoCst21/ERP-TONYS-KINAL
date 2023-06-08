@@ -9,10 +9,10 @@ import java.sql.SQLException;
 public class ConnectionServices_has_Dishes implements IConnection<Services_has_Dishes> {
     @Override
     public Services_has_Dishes resulsetToObject(ResultSet resultSet) throws SQLException {
-        int _idProduct = resultSet.getInt("_idProduct");
+        int _idService = resultSet.getInt("_idService");
         int _idDish = resultSet.getInt("_idDish");
         int idServiceDish = resultSet.getInt("idServiceDish");
-        return new Services_has_Dishes(idServiceDish, _idProduct, _idDish);
+        return new Services_has_Dishes(idServiceDish, _idService, _idDish);
     }
 
     @Override

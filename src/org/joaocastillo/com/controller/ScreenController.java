@@ -18,20 +18,22 @@ public class ScreenController {
         {
             put(Pantallas.MENU, () -> {
                 try {
-                    return FXMLLoader.load(this.getClass().getResource("/org/joaocastillo/com/view/MenuPrincipalView.fxml"));
+                    return FXMLLoader.load(
+                            this.getClass().getResource("/org/joaocastillo/com/view/MenuPrincipalView.fxml"));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             });
             put(Pantallas.EMPRESAS, () -> new CompanyComponent());
+            put(Pantallas.SERVICIOS, () -> new ServicesComponent());
             put(Pantallas.PRODUCTOS, () -> new ProductsComponent());
             put(Pantallas.TIPOS_DE_PLATOS, () -> new DishTypeComponent());
             put(Pantallas.TIPOS_DE_EMPLEADOS, () -> new EmployeeTypeComponent());
             put(Pantallas.PRESUPUESTOS, () -> new BudgetComponent());
             put(Pantallas.PLATOS, () -> new DishComponent());
             put(Pantallas.PRODUCTOS_TIENE_PLATOS, () -> new Products_has_DishesComponent());
-            put(Pantallas.SERVICIOS_TIENE_PLATOS, () -> new DishComponent());
-            put(Pantallas.SERVICIVIOS_TIENE_EMPLEADOS, () -> new DishComponent());
+            put(Pantallas.SERVICIOS_TIENE_PLATOS, () -> new Services_has_DishesComponent());
+            put(Pantallas.SERVICIOS_TIENE_EMPLEADOS, () -> new DishComponent());
             put(Pantallas.PROGRAMADOR, () -> {
                 try {
                     return FXMLLoader.load(this.getClass().getResource("../view/ProgramadorView.fxml"));
@@ -70,7 +72,9 @@ public class ScreenController {
     }
 
     public void activate(String name) {
-       activate(Pantallas.valueOf(name.replace(' ', '_').toUpperCase()));
+        System.out.println(name.replaceAll(" ", "_").toUpperCase());
+        System.out.println("SERVICIOS_TIENE_PLATOS" == name.replaceAll(" ", "_").toUpperCase());
+        activate(Pantallas.valueOf(name.replace(' ', '_').toUpperCase()));
     }
 
     public Scene getMain() {

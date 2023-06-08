@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.joaocastillo.com.bean.Budgets;
 import org.joaocastillo.com.controller.Field;
+import org.joaocastillo.com.controller.FieldType;
 import org.joaocastillo.com.dao.factory.CompanyDAOFactory;
 import org.joaocastillo.com.dao.ConnectionBudget;
 import org.joaocastillo.com.dao.DAO;
@@ -36,7 +37,8 @@ public class BudgetComponent extends GeneralModelComponent<Budgets> {
             ((ComboBox<String>) getFields().get("_idCompany")).getItems().clear();
             System.out.println("Fetching companies data...");
             CompanyDAOFactory.getDAO().readAll().forEach(company -> {
-                ((ComboBox<String>) getFields().get("_idCompany")).getItems().add(company.getIdCompany() + " - " + company.getNameCompany());
+                ((ComboBox<String>) getFields().get("_idCompany")).getItems().add(
+                        company.getIdCompany() + " - " + company.getNameCompany());
             });
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,20 +50,23 @@ public class BudgetComponent extends GeneralModelComponent<Budgets> {
         ((TextField) getFields().get("idBudget")).setText(String.valueOf(model.getIdBudget()));
         ((TextField) getFields().get("budgetAmount")).setText(String.valueOf(model.getBudgetAmount()));
         ((DatePicker) getFields().get("requestDate")).setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
-        ((DatePicker) getFields().get("requestDate")).setSelectedDate(new java.util.Date(model.getRequestDate().getTime()));
+        ((DatePicker) getFields().get("requestDate")).setSelectedDate(
+                new java.util.Date(model.getRequestDate().getTime()));
         ((ComboBox) getFields().get("_idCompany")).getSelectionModel().select(model.get_idCompany() - 1);
     }
 
     @Override
     public Budgets getModel() {
-        int idCompany = ((TextField) getFields().get("idBudget")).getText().isEmpty() ? -1 : Integer.parseInt(((TextField) getFields().get(
-                "idBudget")).getText());
+        int idCompany = ((TextField) getFields().get("idBudget")).getText().isEmpty() ? -1 : Integer.parseInt(
+                ((TextField) getFields().get(
+                        "idBudget")).getText());
 
         return new Budgets(
                 idCompany,
                 new Date(((DatePicker) getFields().get("requestDate")).getSelectedDate().getTime()),
                 Double.parseDouble(((TextField) getFields().get("budgetAmount")).getText()),
-                Integer.parseInt(((ComboBox) getFields().get("_idCompany")).getSelectionModel().getSelectedItem().toString().charAt(0) + "")
+                Integer.parseInt(((ComboBox) getFields().get(
+                        "_idCompany")).getSelectionModel().getSelectedItem().toString().charAt(0) + "")
         );
     }
 
@@ -74,10 +79,10 @@ public class BudgetComponent extends GeneralModelComponent<Budgets> {
     @Override
     public HashMap<String, Field> getMapFields() {
         return new HashMap<String, Field>() {{
-            put("idBudget", new Field("ID", "input"));
-            put("budgetAmount", new Field("Presupuesto", "input"));
-            put("requestDate", new Field("Fecha de solicitud", "datepicker"));
-            put("_idCompany", new Field("Compañia", "combobox"));
+            put("idBudget", new Field("ID", FieldType.INPUT));
+            put("budgetAmount", new Field("Presupuesto", FieldType.INPUT));
+            put("requestDate", new Field("Fecha de solicitud", FieldType.DATEPICKER));
+            put("_idCompany", new Field("Compañia", FieldType.COMBOBOX));
         }};
     }
 

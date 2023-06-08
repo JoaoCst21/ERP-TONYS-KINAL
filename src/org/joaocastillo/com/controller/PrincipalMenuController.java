@@ -32,6 +32,7 @@ public class PrincipalMenuController implements Initializable {
         ScreenController.getInstance().setStage(stage);
 //        stage.setScene(ScreenController.getInstance().getMain());
 
+        System.out.println(((MenuItem) actionEvent.getTarget()).getText());
         ScreenController.getInstance().activate(((MenuItem) actionEvent.getTarget()).getText());
         stage.setResizable(false);
         stage.show();

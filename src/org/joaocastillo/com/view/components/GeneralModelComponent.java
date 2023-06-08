@@ -56,6 +56,8 @@ public abstract class GeneralModelComponent<M> extends AnchorPane implements Ini
     public FormOperations<M> formOperations = new FormOperations<M>(this);
     public CRUDOperation crudOperations = new CRUDOperation(this);
 
+    protected String separator = " - ";
+
 
     // Constructor
     public GeneralModelComponent(DAO<M> dao) {

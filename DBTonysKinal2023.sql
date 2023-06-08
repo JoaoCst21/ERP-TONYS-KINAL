@@ -868,3 +868,4 @@ delimiter ;
 
 call sp_master_report(1)
 
+call sp_select_all_Services_has_Dishes();

@@ -16,13 +16,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Services_has_DishesComponent extends GeneralModelComponent<Services_has_Dishes> {
-    String separator = " - ";
 
     public Services_has_DishesComponent() {
         super(new DAO<Services_has_Dishes>(new ConnectionServices_has_Dishes(), "sp_insert_Services_has_Dishes(?,?)",
                         "sp_select_Services_has_Dishes(?)", "sp_select_all_Services_has_Dishes()",
-                        "sp_update_Services_has_Dishes(?,?,?)", "sp_delete_Services_has_Dishes(?)"), true,
-                "idServiceDish",
+                        "sp_update_Services_has_Dishes(?,?,?)", "sp_delete_Services_has_Dishes(?)"), true, "idServiceDish",
                 "Servicios tiene Platos");
         fetchDishes();
         fetchServices();
@@ -87,7 +85,7 @@ public class Services_has_DishesComponent extends GeneralModelComponent<Services
     public HashMap<String, Field> getMapFields() {
         return new HashMap<String, Field>() {{
             put("idServiceDish", new Field("ID", "input"));
-            put("_idService", new Field("ID Producto", "combobox"));
+            put("_idService", new Field("ID Servicio", "combobox"));
             put("_idDish", new Field("ID Plato", "combobox"));
         }};
     }
@@ -97,7 +95,7 @@ public class Services_has_DishesComponent extends GeneralModelComponent<Services
         TableColumn<Services_has_Dishes, Integer> idServiceDishColumn = new TableColumn<>("ID");
         idServiceDishColumn.setCellValueFactory(new PropertyValueFactory<>("idServiceDish"));
 
-        TableColumn<Services_has_Dishes, Integer> _idServiceColumn = new TableColumn<>("ID Producto");
+        TableColumn<Services_has_Dishes, Integer> _idServiceColumn = new TableColumn<>("ID Servicio");
         _idServiceColumn.setCellValueFactory(new PropertyValueFactory<>("_idService"));
 
         TableColumn<Services_has_Dishes, Integer> _idDishColumn = new TableColumn<>("ID Plato");

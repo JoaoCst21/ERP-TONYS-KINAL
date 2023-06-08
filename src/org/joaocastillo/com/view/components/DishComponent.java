@@ -16,8 +16,12 @@ import java.util.List;
 
 public class DishComponent extends GeneralModelComponent<Dishes> {
 
+    String separator = " - ";
+
     public DishComponent() {
-        super(new DAO<Dishes>(new ConnectionDishes(), "sp_insert_Dishes(?,?,?,?,?)", "sp_select_Dishes(?)", "sp_select_all_Dishes()", "sp_update_Dishes(?,?,?,?,?,?)", "sp_delete_Dishes(?)"), true, "idDish", "Plato");
+        super(new DAO<Dishes>(new ConnectionDishes(), "sp_insert_Dishes(?,?,?,?,?)", "sp_select_Dishes(?)",
+                        "sp_select_all_Dishes()", "sp_update_Dishes(?,?,?,?,?,?)", "sp_delete_Dishes(?)"), true, "idDish",
+                "Plato");
         fetchTypeDishData();
     }
 
@@ -27,7 +31,8 @@ public class DishComponent extends GeneralModelComponent<Dishes> {
             ((ComboBox<String>) getFields().get("_idDishType")).getItems().clear();
             System.out.println("Fetching Dish Type data...");
             DishTypeFactory.getDAO().readAll().forEach(dishType -> {
-                ((ComboBox<String>) getFields().get("_idDishType")).getItems().add(dishType.getIdDishType() + " - " + dishType.getDescriptionDishType());
+                ((ComboBox<String>) getFields().get("_idDishType")).getItems().add(
+                        dishType.getIdDishType() + " - " + dishType.getDescriptionDishType());
             });
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,9 +51,15 @@ public class DishComponent extends GeneralModelComponent<Dishes> {
 
     @Override
     public Dishes getModel() {
-        int idDish = ((TextField) getFields().get("idDish")).getText().isEmpty() ? -1 : Integer.parseInt(((TextField) getFields().get("idDish")).getText());
+        int idDish = ((TextField) getFields().get("idDish")).getText().isEmpty() ? -1 : Integer.parseInt(
+                ((TextField) getFields().get("idDish")).getText());
 
-        return new Dishes(idDish, Integer.parseInt(((TextField) getFields().get("quantity")).getText()), ((TextField) getFields().get("dishName")).getText(), ((TextField) getFields().get("dishDescription")).getText(), Double.parseDouble(((TextField) getFields().get("dishPrice")).getText()), Integer.parseInt(((ComboBox) getFields().get("_idDishType")).getSelectionModel().getSelectedItem().toString().charAt(0) + ""));
+        return new Dishes(idDish, Integer.parseInt(((TextField) getFields().get("quantity")).getText()),
+                ((TextField) getFields().get("dishName")).getText(),
+                ((TextField) getFields().get("dishDescription")).getText(),
+                Double.parseDouble(((TextField) getFields().get("dishPrice")).getText()), Integer.parseInt(
+                ((ComboBox) getFields().get("_idDishType")).getSelectionModel().getSelectedItem().toString().split(
+                        separator)[0]));
     }
 
     @Override

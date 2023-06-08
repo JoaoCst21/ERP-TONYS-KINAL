@@ -9,10 +9,10 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 
 public class Field {
-    private HashMap<String, InputCreator> mapFields = new HashMap<String, InputCreator>() {{
-        put("input", () -> new TextField());
-        put("combobox", () -> new ComboBox<>());
-        put("datepicker", () -> {
+    private HashMap<FieldType, InputCreator> mapFields = new HashMap<FieldType, InputCreator>() {{
+        put(FieldType.INPUT, () -> new TextField());
+        put(FieldType.COMBOBOX, () -> new ComboBox<>());
+        put(FieldType.DATEPICKER, () -> {
             DatePicker date = new DatePicker();
             date.setDateFormat(new SimpleDateFormat("dd/MM/yyyy"));
             return date;
@@ -20,9 +20,14 @@ public class Field {
     }};
 
     private String fieldName;
-    private String fieldType;
+    private FieldType fieldType;
 
     public Field(String fieldName, String fieldType) {
+        this.fieldName = fieldName;
+        this.fieldType = FieldType.valueOf(fieldType.toUpperCase());
+    }
+
+    public Field(String fieldName, FieldType fieldType) {
         this.fieldName = fieldName;
         this.fieldType = fieldType;
     }
@@ -31,7 +36,7 @@ public class Field {
         return fieldName;
     }
 
-    public String getFieldType() {
+    public FieldType getFieldType() {
         return fieldType;
     }
 
