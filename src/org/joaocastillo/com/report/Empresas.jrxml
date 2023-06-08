@@ -5,9 +5,12 @@
               name="report2" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape"
               columnWidth="792" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0"
               uuid="845bc2fd-3e5d-48d5-b7f4-e77a7d8cccd4">
-    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.zoom" value="0.7513148009015783"/>
     <property name="ireport.x" value="0"/>
-    <property name="ireport.y" value="16"/>
+    <property name="ireport.y" value="0"/>
+    <parameter name="baseDir" class="java.lang.String">
+        <defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+    </parameter>
     <queryString>
         <![CDATA[call sp_select_all_Companies();]]>
     </queryString>
@@ -27,8 +30,8 @@
         <band height="572" splitType="Stretch">
             <image>
                 <reportElement x="0" y="0" width="792" height="572" uuid="c9e49400-2bd8-4214-b01c-75b5e9e5705b"/>
-                <!--				<imageExpression><![CDATA["C:\\Users\\Informatica\\WORKSPACE\\ERP-TONYS-KINAL\\src\\org\\joaocastillo\\com\\image\\background-plantilla2-min.jpg"]]></imageExpression>-->
-                <imageExpression><![CDATA["../image/background-plantilla2-min.jpg"]]></imageExpression>
+                <imageExpression>
+                    <![CDATA[$P{baseDir}+"\\\\src\\\\org\\\\joaocastillo\\\\com\\\\image\\\\background-plantilla2-min.jpg"]]></imageExpression>
             </image>
         </band>
     </background>
@@ -49,7 +52,7 @@
             <image>
                 <reportElement x="15" y="15" width="75" height="75" uuid="9b1bc78f-e585-4220-9d2a-609c17e3f630"/>
                 <imageExpression>
-                    <![CDATA["../image/logo.png"]]></imageExpression>
+                    <![CDATA[$P{baseDir}+"\\\\src\\\\org\\\\joaocastillo\\\\com\\\\image\\\\logo.png"]]></imageExpression>
             </image>
         </band>
     </title>

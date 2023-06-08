@@ -12,6 +12,8 @@ create table EmployeeType
 );
 
 create table Companies
+
+
 (
     idCompany      int primary key not null auto_increment,
     nameCompany    varchar(150)    not null,
@@ -812,7 +814,57 @@ call sp_insert_Companies('Catering', 'Guatemala City', '12345678');
 call sp_insert_Companies('Catering', 'Guatemala City', '12345678');
 call sp_insert_Companies('Catering', 'Guatemala City', '12345678');
 
+call sp_insert_Budgets(NOW(), 3000, 1);
+call sp_insert_Budgets(NOW(), 3000, 2);
+call sp_insert_Budgets(NOW(), 3000, 3);
+
+# parameters are, quantity, name, description, price, _idDishType
+call sp_insert_Dishes(30, 'Chicken with rice', 'This Chicken as rice in his soul', 300, 1);
+call sp_insert_Dishes(80, 'Beef with rice', 'This Beef as rice in his soul', 400, 1);
+call sp_insert_Dishes(90, 'Pork with rice', 'This Pork as rice in his soul', 150, 1);
 
 
+# create different services
+call sp_insert_Services(NOW(), 'Birthday Party', NOW(), 'Antigua Guatemala', '12345678', 1);
+call sp_insert_Services(NOW(), 'Wedding Party', NOW(), 'Ciudad de Guatemala', '12345678', 2);
+call sp_insert_Services(NOW(), 'Graduation Party', NOW(), 'Ciudad de Guatemala', '12345678', 3);
 
+call sp_insert_Employees(10, 'Juan', 'Perez', 'Ciudad de Guatemala', '23127881', 1, 1);
+call sp_insert_Employees(12, 'Daniela', 'Muñoz', 'Bosques de San Nicolas', '2456894632', 2, 1);
+call sp_insert_Employees(13, 'Maria', 'Gonzales', 'Ciudad de Guatemala', '23127881', 3, 1);
+
+call sp_insert_Products_has_Dishes(1, 1);
+call sp_insert_Products_has_Dishes(2, 1);
+call sp_insert_Products_has_Dishes(3, 1);
+
+call sp_insert_Services_has_Dishes(1, 1);
+call sp_insert_Services_has_Dishes(2, 1);
+call sp_insert_Services_has_Dishes(1, 2);
+
+call sp_insert_Services_has_Employees(1, 1, NOW(), NOW(), 'Ciudad de Guatemala');
+call sp_insert_Services_has_Employees(1, 2, NOW(), NOW(), 'Ciudad de Guatemala');
+call sp_insert_Services_has_Employees(1, 3, NOW(), NOW(), 'Ciudad de Guatemala');
+
+
+delimiter $$
+create procedure sp_master_report(in sp_idCompany int)
+begin
+    select *
+    from Companies C
+             inner join Budgets B on C.idCompany = B._idCompany
+             inner join Services S on C.idCompany = S._idCompany
+             inner join Services_has_Dishes ShD on S.idService = ShD._idService
+             inner join Dishes D on ShD._idDish = D.idDish
+             inner join DishType DT on D._idDishType = DT.idDishType
+             inner join Products_has_Dishes PhD on D.idDish = PhD._idDish
+             inner join Products P on PhD._idProduct = P.idProduct
+             inner join Services_has_Employees ShE on S.idService = ShE._idService
+             inner join Employees E on ShE._idEmployee = E.idEmployee
+             inner join EmployeeType ET on E._idEmployeeType = ET.idEmployeeType
+    where C.idCompany = sp_idCompany;
+end $$
+delimiter ;
+
+
+call sp_master_report(1)
 

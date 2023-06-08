@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="report2" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape"
+              columnWidth="792" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0"
+              uuid="845bc2fd-3e5d-48d5-b7f4-e77a7d8cccd4">
+    <property name="ireport.zoom" value="1.1000000000000014"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="48"/>
+    <parameter name="baseDir" class="java.lang.String">
+        <defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+    </parameter>
+    <queryString>
+        <![CDATA[call sp_master_report(1)]]>
+    </queryString>
+    <field name="idCompany" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="nameCompany" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="addressCompany" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="phoneCompany" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="idBudget" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="requestDate" class="java.sql.Date">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="budgetAmount" class="java.math.BigDecimal">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="_idCompany" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="idService" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="dateService" class="java.sql.Date">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="typeService" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="timeService" class="java.sql.Time">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="locationService" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="contactPhoneService" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="idServiceDish" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="_idService" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="_idDish" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="idDish" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="quantity" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="dishName" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="dishDescription" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="dishPrice" class="java.math.BigDecimal">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="_idDishType" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="idDishType" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="descriptionDishType" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="idProductDish" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="_idProduct" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="idProduct" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="productName" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="productQuantity" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="idServiceEmployee" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="_idEmployee" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="eventDate" class="java.sql.Date">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="eventTime" class="java.sql.Time">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="eventLocation" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="idEmployee" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="employeeNumber" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="firstNamesEmployee" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="lastNamesEmployee" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="addressEmployee" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="contactPhoneEmployee" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="chefDegreeEmployee" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="_idEmployeeType" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="idEmployeeType" class="java.lang.Integer">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <field name="descriptionEmployeeType" class="java.lang.String">
+        <fieldDescription><![CDATA[]]></fieldDescription>
+    </field>
+    <background>
+        <band height="572" splitType="Stretch">
+            <image>
+                <reportElement x="0" y="0" width="792" height="572" uuid="c9e49400-2bd8-4214-b01c-75b5e9e5705b"/>
+                <imageExpression>
+                    <![CDATA[$P{baseDir}+"\\\\src\\\\org\\\\joaocastillo\\\\com\\\\image\\\\background-plantilla2-min.jpg"]]></imageExpression>
+            </image>
+        </band>
+    </background>
+    <title>
+        <band height="104" splitType="Stretch">
+            <rectangle>
+                <reportElement x="0" y="0" width="792" height="104" backcolor="#000000"
+                               uuid="1d7fc5f8-fb87-4449-b1bf-f142fd0881ec"/>
+            </rectangle>
+            <staticText>
+                <reportElement x="326" y="35" width="148" height="55" forecolor="#FFFFFF" backcolor="#000000"
+                               uuid="ff4f49a1-e056-4bb5-b6b9-e19fb0de6149"/>
+                <textElement>
+                    <font size="30" isUnderline="true"/>
+                </textElement>
+                <text><![CDATA[REPORTE]]></text>
+            </staticText>
+            <image>
+                <reportElement x="15" y="15" width="75" height="75" uuid="9b1bc78f-e585-4220-9d2a-609c17e3f630"/>
+                <imageExpression>
+                    <![CDATA[$P{baseDir}+"\\\\src\\\\org\\\\joaocastillo\\\\com\\\\image\\\\logo.png"]]></imageExpression>
+            </image>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="66" splitType="Stretch">
+            <staticText>
+                <reportElement x="312" y="0" width="181" height="65" uuid="114a2a1a-f595-44ac-b06e-6de64e1ba7d9"/>
+                <textElement>
+                    <font size="40"/>
+                </textElement>
+                <text><![CDATA[General]]></text>
+            </staticText>
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band height="47" splitType="Stretch">
+            <elementGroup>
+                <staticText>
+                    <reportElement x="7" y="1" width="19" height="20" uuid="8a9a99f3-4516-431c-8dc5-605fc76612da"/>
+                    <textElement>
+                        <font size="14" isBold="true"/>
+                    </textElement>
+                    <text><![CDATA[ID]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement x="174" y="1" width="66" height="20" uuid="d745e03e-1183-4e4c-9e70-21173c4a4a92"/>
+                    <textElement>
+                        <font size="14" isBold="true"/>
+                    </textElement>
+                    <text><![CDATA[Teléfono]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement x="32" y="2" width="66" height="20" uuid="e4f83c9d-bc9c-4865-b4a8-42692ba59d59"/>
+                    <textElement>
+                        <font size="14" isBold="true"/>
+                    </textElement>
+                    <text><![CDATA[Nombre]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement x="103" y="1" width="66" height="20" uuid="25a20c19-1b15-40aa-9bb3-8db881a10042"/>
+                    <textElement>
+                        <font size="14" isBold="true"/>
+                    </textElement>
+                    <text><![CDATA[Dirección]]></text>
+                </staticText>
+            </elementGroup>
+            <staticText>
+                <reportElement x="386" y="0" width="66" height="38" uuid="106a1f4c-806e-4a1c-b466-da8b77074b1f"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Hora de Servicio]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="244" y="1" width="66" height="37" uuid="b9600004-1f5e-447f-8067-a01fdd0603a9"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Fecha Solicitud]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="315" y="1" width="66" height="37" uuid="9d834ee3-bbf4-4c36-ae0c-331487b2a63c"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Tipo de Servicio]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="455" y="0" width="66" height="37" uuid="2714f0de-e89a-4781-8b0a-31be6f7f6b32"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Lugar de Servicio]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="525" y="1" width="66" height="38" uuid="78681cb6-66d4-41e7-ae46-a02f5f6b3f21"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Tel. de contacto]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="596" y="1" width="66" height="37" uuid="6616bd54-3ac5-4792-8a20-186b63aee582"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Grado Cocinero]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="731" y="3" width="66" height="37" uuid="23e4c199-5309-436e-b4eb-a4a14271ef14"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Precio Plato]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="665" y="3" width="66" height="38" uuid="7b0d656b-e193-4116-a6d9-021e77ba4988"/>
+                <textElement>
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Nombre de Plato]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="43" splitType="Stretch">
+            <textField>
+                <reportElement x="733" y="5" width="59" height="34" uuid="66e8d018-2501-46b2-9432-2315cba66bc4"/>
+                <textFieldExpression><![CDATA[$F{dishPrice}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="662" y="5" width="71" height="32" uuid="3252d1a5-f0ec-4780-a4bc-90221f135ac0"/>
+                <textFieldExpression><![CDATA[$F{descriptionDishType}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="7" y="1" width="19" height="20" uuid="bcb7bd4f-59d0-4046-922e-1deb0e960c4c"/>
+                <textFieldExpression><![CDATA[$F{idCompany}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="174" y="1" width="66" height="20" uuid="a31b215c-bbdc-40bf-9af5-597cabc83894"/>
+                <textFieldExpression><![CDATA[$F{phoneCompany}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="32" y="2" width="66" height="20" uuid="5924f063-f0a2-455b-bcaa-42edd2c6ab8f"/>
+                <textFieldExpression><![CDATA[$F{nameCompany}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="103" y="1" width="66" height="20" uuid="2dc97c2b-b145-4322-8b0f-79db634a2e1b"/>
+                <textFieldExpression><![CDATA[$F{addressCompany}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="386" y="0" width="66" height="38" uuid="4a43860e-3a1b-4308-a807-05452de8b3cc"/>
+                <textFieldExpression><![CDATA[$F{timeService}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="244" y="1" width="66" height="37" uuid="37619144-24ae-4177-8305-4d625d648e74"/>
+                <textFieldExpression><![CDATA[$F{requestDate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="315" y="1" width="66" height="37" uuid="f03ead31-2b72-4571-91a1-372adfad834e"/>
+                <textFieldExpression><![CDATA[$F{typeService}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="455" y="0" width="66" height="37" uuid="f6915162-7a4d-46f0-8850-1ae9e99cdb1a"/>
+                <textFieldExpression><![CDATA[$F{locationService}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="525" y="1" width="66" height="38" uuid="811a7704-5670-4a4a-9657-de8dab18a64c"/>
+                <textFieldExpression><![CDATA[$F{contactPhoneService}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="596" y="1" width="66" height="37" uuid="facf4fef-bd7f-4d53-aa26-7f1f187f8546"/>
+                <textFieldExpression><![CDATA[$F{descriptionEmployeeType}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <summary>
+        <band height="42" splitType="Stretch"/>
+    </summary>
+</jasperReport>

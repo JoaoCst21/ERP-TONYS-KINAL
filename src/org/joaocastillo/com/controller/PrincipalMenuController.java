@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+import org.joaocastillo.com.report.GenerateReport;
 import org.joaocastillo.com.view.components.CompanyComponent;
 import org.joaocastillo.com.view.components.DishTypeComponent;
 import org.joaocastillo.com.view.components.EmployeeTypeComponent;
@@ -35,5 +36,10 @@ public class PrincipalMenuController implements Initializable {
         stage.setResizable(false);
         stage.show();
     }
-}
 
+    public void openGeneralReport(ActionEvent actionEvent) {
+        GenerateReport.mostrarReporte("General", "Reporte General", new HashMap() {{
+            put("baseDir", System.getProperty("user.dir").replaceAll("\\\\", "\\\\\\\\"));
+        }});
+    }
+}
