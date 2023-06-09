@@ -61,8 +61,8 @@ public class Products_has_DishesComponent extends GeneralModelComponent<Products
     @Override
     public void setFields(Products_has_Dishes model) {
         ((TextField) getFields().get("idProductDish")).setText(String.valueOf(model.getIdProductDish()));
-        ((ComboBox) getFields().get("_idProduct")).setValue(String.valueOf(model.get_idProduct()));
-        ((ComboBox) getFields().get("_idDish")).setValue(String.valueOf(model.get_idDish()));
+        setComboboxValue(((ComboBox) getFields().get("_idProduct")), model.get_idProduct());
+        setComboboxValue(((ComboBox) getFields().get("_idDish")), model.get_idDish());
     }
 
     @Override

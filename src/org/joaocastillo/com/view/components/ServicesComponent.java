@@ -47,7 +47,7 @@ public class ServicesComponent extends GeneralModelComponent<Services> {
         ((TextField) getFields().get("timeService")).setText(String.valueOf(model.getTimeService()));
         ((TextField) getFields().get("locationService")).setText(String.valueOf(model.getLocationService()));
         ((TextField) getFields().get("contactPhoneService")).setText(String.valueOf(model.getContactPhoneService()));
-        ((ComboBox) getFields().get("_idCompany")).setValue(model.get_idCompany());
+        setComboboxValue(((ComboBox) getFields().get("_idCompany")), model.get_idCompany());
     }
 
     @Override

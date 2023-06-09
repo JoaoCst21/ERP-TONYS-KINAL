@@ -46,7 +46,7 @@ public class DishComponent extends GeneralModelComponent<Dishes> {
         ((TextField) getFields().get("dishName")).setText(model.getDishName());
         ((TextField) getFields().get("dishDescription")).setText(model.getDescriptionDish());
         ((TextField) getFields().get("dishPrice")).setText(String.valueOf(model.getDishPrice()));
-        ((ComboBox) getFields().get("_idDishType")).setValue(model.get_idDishType());
+        setComboboxValue(((ComboBox) getFields().get("_idDishType")), model.get_idDishType());
     }
 
     @Override

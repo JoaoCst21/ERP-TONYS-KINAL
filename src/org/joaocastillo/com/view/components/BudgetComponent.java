@@ -52,7 +52,7 @@ public class BudgetComponent extends GeneralModelComponent<Budgets> {
         ((DatePicker) getFields().get("requestDate")).setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
         ((DatePicker) getFields().get("requestDate")).setSelectedDate(
                 new java.util.Date(model.getRequestDate().getTime()));
-        ((ComboBox) getFields().get("_idCompany")).getSelectionModel().select(model.get_idCompany() - 1);
+        setComboboxValue(((ComboBox) getFields().get("_idCompany")), model.get_idCompany());
     }
 
     @Override

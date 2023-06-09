@@ -17,11 +17,11 @@ public class ConnectionEmployee implements IConnection<Employees> {
         String lastNamesEmployee = resultSet.getString("lastNamesEmployee");
         String addressEmployee = resultSet.getString("addressEmployee");
         String contactPhoneEmployee = resultSet.getString("contactPhoneEmployee");
-        int _idEmployeeType = resultSet.getInt("_idEmployeeType");
         String chefDegreeEmployee = resultSet.getString("chefDegreeEmployee");
+        int _idEmployeeType = resultSet.getInt("_idEmployeeType");
 
         return new Employees(idEmployee, employeeNumber, firstNamesEmployee, lastNamesEmployee, addressEmployee,
-                contactPhoneEmployee, _idEmployeeType, chefDegreeEmployee);
+                contactPhoneEmployee, chefDegreeEmployee, _idEmployeeType);
     }
 
     @Override

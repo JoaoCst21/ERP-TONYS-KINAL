@@ -8,20 +8,23 @@ public class Employees {
     private String lastNamesEmployee;
     private String addressEmployee;
     private String contactPhoneEmployee;
-    private int _idEmployeeType;
     private String chefDegreeEmployee;
+    private int _idEmployeeType;
 
     // Constructors
 
-    public Employees(int idEmployee, int employeeNumber, String firstNamesEmployee, String lastNamesEmployee, String addressEmployee, String contactPhone, int _idEmployeeType, String chefDegree) {
+
+    public Employees(int idEmployee, int employeeNumber, String firstNamesEmployee, String lastNamesEmployee,
+                     String addressEmployee, String contactPhoneEmployee, String chefDegreeEmployee,
+                     int _idEmployeeType) {
         this.idEmployee = idEmployee;
         this.employeeNumber = employeeNumber;
         this.firstNamesEmployee = firstNamesEmployee;
         this.lastNamesEmployee = lastNamesEmployee;
         this.addressEmployee = addressEmployee;
-        this.contactPhoneEmployee = contactPhone;
+        this.contactPhoneEmployee = contactPhoneEmployee;
+        this.chefDegreeEmployee = chefDegreeEmployee;
         this._idEmployeeType = _idEmployeeType;
-        this.chefDegreeEmployee = chefDegree;
     }
 
     // Getters

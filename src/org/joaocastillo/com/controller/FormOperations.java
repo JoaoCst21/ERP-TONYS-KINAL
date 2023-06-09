@@ -6,6 +6,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.TextAlignment;
 import org.joaocastillo.com.view.components.GeneralModelComponent;
 
 import java.util.HashMap;
@@ -92,13 +96,14 @@ public class FormOperations<M> {
 
 
         double formWidth = component.formModel.getPrefWidth();
+        double formHeight = component.formModel.getPrefHeight();
         // size must be even, if not add 1
         double size = (component.getMapFields().size() % 2 == 0 ? component.getMapFields().size() : component.getMapFields().size() + 1);
 
         // width of each label - textfield pair including padding
         double width = formWidth / size;
 
-        // width of all textfields together
+        // width of all textFields together
         double nodesSizeAcc = width * (size / 2);
 
         // width of all labels together
@@ -117,13 +122,26 @@ public class FormOperations<M> {
             Label label = new Label(entry.getValue().getFieldName());
             label.setPrefWidth(width / 1.5);
             label.setStyle("-fx-font-weight: bold;");
+            label.setWrapText(true);
+            label.setTextAlignment(TextAlignment.LEFT);
 
-            if (component.getFields().get(entry.getKey()) instanceof Control) {
-                ((Control) component.getFields().get(entry.getKey())).setPrefWidth(width);
+            Node node = component.getFields().get(entry.getKey());
+
+            if (node instanceof Control) {
+                ((Control) node).setPrefWidth(width);
             }
 
+            if (node instanceof Label) {
+                ((Label) node).setPrefHeight(formHeight / 2);
+            }
+
+            if (node instanceof Pane) {
+                ((Pane) node).setPrefWidth(width);
+            }
+
+
             component.formModel.add(label, indexColumn, indexRow);
-            component.formModel.add(component.getFields().get(entry.getKey()), indexColumn + 1, indexRow);
+            component.formModel.add(node, indexColumn + 1, indexRow);
             if (iteration % 2 == 0) indexRow++;
             else indexRow--;
 

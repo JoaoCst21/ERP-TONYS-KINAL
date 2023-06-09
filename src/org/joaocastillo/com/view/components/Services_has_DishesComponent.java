@@ -59,8 +59,8 @@ public class Services_has_DishesComponent extends GeneralModelComponent<Services
     @Override
     public void setFields(Services_has_Dishes model) {
         ((TextField) getFields().get("idServiceDish")).setText(String.valueOf(model.getIdServiceDish()));
-        ((ComboBox) getFields().get("_idService")).setValue(String.valueOf(model.get_idService()));
-        ((ComboBox) getFields().get("_idDish")).setValue(String.valueOf(model.get_idDish()));
+        setComboboxValue(((ComboBox) getFields().get("_idService")), model.get_idService());
+        setComboboxValue(((ComboBox) getFields().get("_idDish")), model.get_idDish());
     }
 
     @Override

@@ -27,8 +27,9 @@
                     <items>
                         <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Empresas"/>
                         <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Productos"/>
+                        <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Empleados"/>
                         <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Tipos de Platos"/>
-                        <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Tipos de Platos"/>
+                        <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Tipos de Empleados"/>
                         <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Presupuestos"/>
                         <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Platos"/>
                         <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Servicios"/>
@@ -37,6 +38,7 @@
                 <Menu mnemonicParsing="false" text="Reportes">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#openGeneralReport" text="General"/>
+                        <MenuItem mnemonicParsing="false" onAction="#openBudgetReport" text="Presupuesto"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="?">

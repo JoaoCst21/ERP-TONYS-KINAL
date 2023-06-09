@@ -26,6 +26,7 @@ public class ScreenController {
             });
             put(Pantallas.EMPRESAS, () -> new CompanyComponent());
             put(Pantallas.SERVICIOS, () -> new ServicesComponent());
+            put(Pantallas.EMPLEADOS, () -> new EmployeeComponent());
             put(Pantallas.PRODUCTOS, () -> new ProductsComponent());
             put(Pantallas.TIPOS_DE_PLATOS, () -> new DishTypeComponent());
             put(Pantallas.TIPOS_DE_EMPLEADOS, () -> new EmployeeTypeComponent());

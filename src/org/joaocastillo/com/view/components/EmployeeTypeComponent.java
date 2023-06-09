@@ -7,6 +7,7 @@ import org.joaocastillo.com.bean.EmployeeType;
 import org.joaocastillo.com.controller.Field;
 import org.joaocastillo.com.dao.ConnectionEmployeeType;
 import org.joaocastillo.com.dao.DAO;
+import org.joaocastillo.com.dao.factory.EmployeeTypeFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,12 +16,7 @@ import java.util.List;
 public class EmployeeTypeComponent extends GeneralModelComponent<EmployeeType> {
 
     public EmployeeTypeComponent() {
-        super(new DAO<EmployeeType>(new ConnectionEmployeeType(),
-                "sp_insert_EmployeeType(?)",
-                "sp_select_EmployeeType(?)",
-                "sp_select_all_EmployeeType()",
-                "sp_update_EmployeeType(?,?)",
-                "sp_delete_EmployeeType(?)"), true, "idEmployeeType", "TipoEmpleado");
+        super(EmployeeTypeFactory.getDAO(), true, "idEmployeeType", "TipoEmpleado");
     }
 
     @Override

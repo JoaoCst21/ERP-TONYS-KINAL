@@ -62,7 +62,9 @@ public abstract class GeneralModelComponent<M> extends AnchorPane implements Ini
     // Constructor
     public GeneralModelComponent(DAO<M> dao) {
         this.dao = dao;
-        new LoadFXML().loadFXML(this, "../view/Plantilla.fxml");
+        int inputsSize = this.getMapFields().size();
+        if (inputsSize <= 4) new LoadFXML().loadFXML(this, "../view/Plantilla.fxml");
+        else new LoadFXML().loadFXML(this, "../view/PlantillaGrande.fxml");
     }
 
     public GeneralModelComponent(DAO<M> dao, boolean isAutoIncrement, String fieldID, String entityName) {
@@ -75,6 +77,7 @@ public abstract class GeneralModelComponent<M> extends AnchorPane implements Ini
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(System.getProperty("user.dir").replaceAll("\\\\", "\\\\\\\\"));
         btnSave.setOnMouseClicked(event -> crudOperations.onCreate());
         btnDelete.setOnMouseClicked(event -> crudOperations.onCancel());
         btnEdit.setOnMouseClicked(event -> crudOperations.onEdit());

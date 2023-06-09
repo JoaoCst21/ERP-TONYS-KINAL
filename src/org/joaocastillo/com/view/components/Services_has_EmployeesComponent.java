@@ -27,8 +27,8 @@ public class Services_has_EmployeesComponent extends GeneralModelComponent<Servi
                                 "(?,?,?,?,?)",
                         "sp_select_Services_has_Employees(?)", "sp_select_all_Services_has_Employees()",
                         "sp_update_Services_has_Employees(?,?,?,?,?,?)", "sp_delete_Services_has_Employees(?)"), true,
-                "idServiceDish",
-                "Servicios tiene Platos");
+                "idServiceEmployee",
+                "Servicios tiene Empleados");
         fetchEmployees();
         fetchServices();
     }
@@ -66,7 +66,7 @@ public class Services_has_EmployeesComponent extends GeneralModelComponent<Servi
 
     @Override
     public void setFields(Services_has_Employees model) {
-        ((TextField) getFields().get("idServiceDish")).setText(String.valueOf(model.getIdServiceEmployee()));
+        ((TextField) getFields().get("idServiceEmployee")).setText(String.valueOf(model.getIdServiceEmployee()));
         setComboboxValue(((ComboBox) getFields().get("_idService")), model.get_idService());
         setComboboxValue((ComboBox) getFields().get("_idEmployee"), model.get_idEmployee());
         ((DatePicker) getFields().get("eventDate")).setSelectedDate(model.getEventDate());
@@ -76,8 +76,8 @@ public class Services_has_EmployeesComponent extends GeneralModelComponent<Servi
 
     @Override
     public Services_has_Employees getModel() {
-        int id = ((TextField) getFields().get("idServiceDish")).getText().isEmpty() ? -1 : Integer.parseInt(
-                ((TextField) getFields().get("idServiceDish")).getText());
+        int id = ((TextField) getFields().get("idServiceEmployee")).getText().isEmpty() ? -1 : Integer.parseInt(
+                ((TextField) getFields().get("idServiceEmployee")).getText());
 
 
         return new Services_has_Employees(id, Integer.parseInt(
@@ -100,7 +100,7 @@ public class Services_has_EmployeesComponent extends GeneralModelComponent<Servi
     @Override
     public HashMap<String, Field> getMapFields() {
         return new HashMap<String, Field>() {{
-            put("idServiceDish", new Field("ID", FieldType.INPUT));
+            put("idServiceEmployee", new Field("ID", FieldType.INPUT));
             put("_idService", new Field("ID Servicio", FieldType.COMBOBOX));
             put("_idEmployee", new Field("ID Empleado", FieldType.COMBOBOX));
             put("eventDate", new Field("Fecha de evento", FieldType.DATEPICKER));
@@ -111,8 +111,8 @@ public class Services_has_EmployeesComponent extends GeneralModelComponent<Servi
 
     @Override
     protected List<TableColumn<Services_has_Employees, ?>> createColumns() {
-        TableColumn<Services_has_Employees, Integer> idServiceDishColumn = new TableColumn<>("ID");
-        idServiceDishColumn.setCellValueFactory(new PropertyValueFactory<>("idServiceDish"));
+        TableColumn<Services_has_Employees, Integer> idServiceEmployeeColumn = new TableColumn<>("ID");
+        idServiceEmployeeColumn.setCellValueFactory(new PropertyValueFactory<>("idServiceEmployee"));
 
         TableColumn<Services_has_Employees, Integer> _idServiceColumn = new TableColumn<>("ID Servicio");
         _idServiceColumn.setCellValueFactory(new PropertyValueFactory<>("_idService"));
@@ -132,7 +132,7 @@ public class Services_has_EmployeesComponent extends GeneralModelComponent<Servi
 
         List<TableColumn<Services_has_Employees, ?>> columns =
                 new ArrayList<TableColumn<Services_has_Employees, ?>>() {{
-                    add(idServiceDishColumn);
+                    add(idServiceEmployeeColumn);
                     add(_idServiceColumn);
                     add(_idEmployeeColumn);
                     add(eventDateColumn);
