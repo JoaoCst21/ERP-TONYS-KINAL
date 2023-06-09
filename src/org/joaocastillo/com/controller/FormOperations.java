@@ -32,7 +32,9 @@ public class FormOperations<M> {
             }
 
             if (node instanceof ComboBox) {
-                ((ComboBox) node).getSelectionModel().clearSelection();
+                ComboBox comboBox = ((ComboBox) node);
+                comboBox.setValue(null);
+                comboBox.getSelectionModel().clearSelection();
             }
 
             if (node instanceof DatePicker) {
@@ -57,14 +59,19 @@ public class FormOperations<M> {
         for (Map.Entry<String, Node> field : component.getFields().entrySet()) {
             if (component.isAutoIncrement && component.getFields().get(component.fieldID) == field.getValue()) continue;
             if (field.getValue() instanceof TextField) {
+                System.out.println("text field");
+                System.out.println(((TextField) field.getValue()).getText());
                 if (((TextField) field.getValue()).getText().isEmpty()) return true;
             }
 
             if (field.getValue() instanceof ComboBox) {
+                System.out.println("combo box");
+                System.out.println(((ComboBox) field.getValue()).getSelectionModel().getSelectedItem());
                 if (((ComboBox) field.getValue()).getSelectionModel().isEmpty()) return true;
             }
 
             if (field.getValue() instanceof DatePicker) {
+                System.out.println(((DatePicker) field.getValue()).getSelectedDate());
                 if (((DatePicker) field.getValue()).getSelectedDate() == null) return true;
             }
         }

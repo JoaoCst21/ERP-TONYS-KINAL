@@ -150,6 +150,18 @@ public abstract class GeneralModelComponent<M> extends AnchorPane implements Ini
 
     public abstract void setFields(M model);
 
+    public void setComboboxValue(ComboBox comboBox, int id) {
+        // iterate over the comboBox items
+        for (int i = 0; i < comboBox.getItems().size(); i++) {
+            // if the item is equal to the model's id, set the comboBox value to that item
+            if (comboBox.getItems().get(i).toString().split(separator)[0].equals(String.valueOf(id))) {
+                comboBox.getSelectionModel().select(i);
+                comboBox.setValue(comboBox.getItems().get(i));
+                break;
+            }
+        }
+    }
+
     public abstract M getModel();
 
     public abstract String getModelID();

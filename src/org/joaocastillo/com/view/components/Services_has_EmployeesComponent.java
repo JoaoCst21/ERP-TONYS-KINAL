@@ -2,6 +2,7 @@ package org.joaocastillo.com.view.components;
 
 import eu.schudt.javafx.controls.calendar.DatePicker;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.joaocastillo.com.bean.Services_has_Employees;
@@ -12,20 +13,20 @@ import org.joaocastillo.com.dao.DAO;
 import org.joaocastillo.com.dao.factory.EmployeeFactory;
 import org.joaocastillo.com.dao.factory.ServicesFactory;
 
-import javax.swing.table.TableColumn;
 import javax.xml.soap.Text;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Services_has_EmployeesComponent extends GeneralModelComponent<Services_has_Employees> {
     public Services_has_EmployeesComponent() {
         super(new DAO<Services_has_Employees>(new ConnectionServices_has_Employees(),
                         "sp_insert_Services_has_Employees" +
-                                "(?,?)",
+                                "(?,?,?,?,?)",
                         "sp_select_Services_has_Employees(?)", "sp_select_all_Services_has_Employees()",
-                        "sp_update_Services_has_Employees(?,?,?)", "sp_delete_Services_has_Employees(?)"), true,
+                        "sp_update_Services_has_Employees(?,?,?,?,?,?)", "sp_delete_Services_has_Employees(?)"), true,
                 "idServiceDish",
                 "Servicios tiene Platos");
         fetchEmployees();
@@ -62,11 +63,15 @@ public class Services_has_EmployeesComponent extends GeneralModelComponent<Servi
         }
     }
 
+
     @Override
     public void setFields(Services_has_Employees model) {
         ((TextField) getFields().get("idServiceDish")).setText(String.valueOf(model.getIdServiceEmployee()));
-        ((ComboBox) getFields().get("_idService")).setValue(String.valueOf(model.get_idService()));
-        ((ComboBox) getFields().get("_idEmployee")).setValue(String.valueOf(model.get_idEmployee()));
+        setComboboxValue(((ComboBox) getFields().get("_idService")), model.get_idService());
+        setComboboxValue((ComboBox) getFields().get("_idEmployee"), model.get_idEmployee());
+        ((DatePicker) getFields().get("eventDate")).setSelectedDate(model.getEventDate());
+        ((TextField) getFields().get("eventTime")).setText(model.getEventTime().toString());
+        ((TextField) getFields().get("eventLocation")).setText(model.getEventLocation());
     }
 
     @Override
@@ -97,10 +102,12 @@ public class Services_has_EmployeesComponent extends GeneralModelComponent<Servi
         return new HashMap<String, Field>() {{
             put("idServiceDish", new Field("ID", FieldType.INPUT));
             put("_idService", new Field("ID Servicio", FieldType.COMBOBOX));
-            put("_idEmployee", new Field("ID Plato", FieldType.COMBOBOX));
+            put("_idEmployee", new Field("ID Empleado", FieldType.COMBOBOX));
+            put("eventDate", new Field("Fecha de evento", FieldType.DATEPICKER));
+            put("eventTime", new Field("Hora de evento", FieldType.INPUT));
+            put("eventLocation", new Field("Lugar de evento", FieldType.INPUT));
         }};
     }
-
 
     @Override
     protected List<TableColumn<Services_has_Employees, ?>> createColumns() {
@@ -110,14 +117,27 @@ public class Services_has_EmployeesComponent extends GeneralModelComponent<Servi
         TableColumn<Services_has_Employees, Integer> _idServiceColumn = new TableColumn<>("ID Servicio");
         _idServiceColumn.setCellValueFactory(new PropertyValueFactory<>("_idService"));
 
-        TableColumn<Services_has_Employees, Integer> _idEmployeeColumn = new TableColumn<>("ID Plato");
+        TableColumn<Services_has_Employees, Integer> _idEmployeeColumn = new TableColumn<>("ID Empleado");
         _idEmployeeColumn.setCellValueFactory(new PropertyValueFactory<>("_idEmployee"));
+
+        TableColumn<Services_has_Employees, Date> eventDateColumn = new TableColumn<>("Fecha de evento");
+        eventDateColumn.setCellValueFactory(new PropertyValueFactory<>("eventDate"));
+
+        TableColumn<Services_has_Employees, Integer> eventTimeColumn = new TableColumn<>("Hora de evento");
+        eventTimeColumn.setCellValueFactory(new PropertyValueFactory<>("eventTime"));
+
+        TableColumn<Services_has_Employees, String> eventLocationColumn = new TableColumn<>("Lugar de evento");
+        eventLocationColumn.setCellValueFactory(new PropertyValueFactory<>("eventLocation"));
+
 
         List<TableColumn<Services_has_Employees, ?>> columns =
                 new ArrayList<TableColumn<Services_has_Employees, ?>>() {{
                     add(idServiceDishColumn);
                     add(_idServiceColumn);
                     add(_idEmployeeColumn);
+                    add(eventDateColumn);
+                    add(eventTimeColumn);
+                    add(eventLocationColumn);
                 }};
 
         columns.forEach(column -> column.prefWidthProperty().bind(tblModel.widthProperty().divide(columns.size())));
