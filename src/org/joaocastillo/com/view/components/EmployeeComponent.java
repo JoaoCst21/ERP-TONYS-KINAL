@@ -49,7 +49,9 @@ public class EmployeeComponent extends GeneralModelComponent<Employees> {
 
     @Override
     public Employees getModel() {
-        int idEmployee = Integer.parseInt(((TextField) getFields().get("idEmployee")).getText());
+        int idEmployee = ((TextField) getFields().get("idEmployee")).getText().isEmpty()
+                ? -1 : Integer.parseInt(((TextField) getFields().get("idEmployee")).getText());
+
         int employeeNumber = Integer.parseInt(((TextField) getFields().get("employeeNumber")).getText());
         String firstNamesEmployee = ((TextField) getFields().get("firstNamesEmployee")).getText();
         String lastNamesEmployee = ((TextField) getFields().get("lastNamesEmployee")).getText();
@@ -92,19 +94,19 @@ public class EmployeeComponent extends GeneralModelComponent<Employees> {
         TableColumn<Employees, Integer> employeeNumberColumn = new TableColumn<>("Número Empleado");
         employeeNumberColumn.setCellValueFactory(new PropertyValueFactory<>("employeeNumber"));
 
-        TableColumn<Employees, Integer> firstNamesEmployeeColumn = new TableColumn<>("Nombres Empleado");
+        TableColumn<Employees, String> firstNamesEmployeeColumn = new TableColumn<>("Nombres Empleado");
         firstNamesEmployeeColumn.setCellValueFactory(new PropertyValueFactory<>("firstNamesEmployee"));
 
-        TableColumn<Employees, Integer> lastNamesEmployeeColumn = new TableColumn<>("Apellidos Empleado");
+        TableColumn<Employees, String> lastNamesEmployeeColumn = new TableColumn<>("Apellidos Empleado");
         lastNamesEmployeeColumn.setCellValueFactory(new PropertyValueFactory<>("lastNamesEmployee"));
 
-        TableColumn<Employees, Integer> addressEmployeeColumn = new TableColumn<>("Dirección Empleado");
+        TableColumn<Employees, String> addressEmployeeColumn = new TableColumn<>("Dirección Empleado");
         addressEmployeeColumn.setCellValueFactory(new PropertyValueFactory<>("addressEmployee"));
 
-        TableColumn<Employees, Integer> contactPhoneColumn = new TableColumn<>("Teléfono de Contacto");
+        TableColumn<Employees, String > contactPhoneColumn = new TableColumn<>("Teléfono de Contacto");
         contactPhoneColumn.setCellValueFactory(new PropertyValueFactory<>("contactPhone"));
 
-        TableColumn<Employees, Integer> chefDegreeEmployeeColumn = new TableColumn<>("Posición de Empleado");
+        TableColumn<Employees, String> chefDegreeEmployeeColumn = new TableColumn<>("Posición de Empleado");
         chefDegreeEmployeeColumn.setCellValueFactory(new PropertyValueFactory<>("chefDegreeEmployee"));
 
         TableColumn<Employees, Integer> _idEmployeeTypeColumn = new TableColumn<>("Tipo Empleado");

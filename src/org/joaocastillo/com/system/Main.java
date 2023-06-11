@@ -31,7 +31,7 @@ public class Main extends Application {
         stage.show();*/
 
         ScreenController.getInstance().setStage(stage);
-        ScreenController.getInstance().activate(Pantallas.MENU);
+        ScreenController.getInstance().activate(Pantallas.LOGIN);
 
         stage.setResizable(true);
         stage.show();

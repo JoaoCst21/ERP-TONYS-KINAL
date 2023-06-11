@@ -32,8 +32,8 @@ public class ConnectionEmployee implements IConnection<Employees> {
         sp.setString(4, model.getLastNamesEmployee());
         sp.setString(5, model.getAddressEmployee());
         sp.setString(6, model.getContactPhone());
-        sp.setInt(7, model.get_idEmployeeType());
-        sp.setString(8, model.getChefDegreeEmployee());
+        sp.setString(7, model.getChefDegreeEmployee());
+        sp.setInt(8, model.get_idEmployeeType());
     }
 
     @Override
@@ -43,8 +43,8 @@ public class ConnectionEmployee implements IConnection<Employees> {
         sp.setString(3, model.getLastNamesEmployee());
         sp.setString(4, model.getAddressEmployee());
         sp.setString(5, model.getContactPhone());
-        sp.setInt(6, model.get_idEmployeeType());
-        sp.setString(7, model.getChefDegreeEmployee());
+        sp.setString(6, model.getChefDegreeEmployee());
+        sp.setInt(7, model.get_idEmployeeType());
     }
 
     @Override

@@ -7,16 +7,16 @@ import java.io.IOException;
 
 public class LoadFXML {
     public void loadFXML(Node node, String url) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(url));
-
-        System.out.println(getClass().getResource(url));
-        fxmlLoader.setRoot(node);
-        fxmlLoader.setController(node);
-
         try {
+            // awkward solution to a problem with the path of the fxml files in Netbeans
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(url.replace("..", "/org/joaocastillo/com")));
+            fxmlLoader.setRoot(node);
+            fxmlLoader.setController(node);
+
             fxmlLoader.load();
         } catch (IOException exception) {
-            throw new RuntimeException(exception);
+            exception.printStackTrace();
+//            throw new RuntimeException(exception);
         }
     }
 }

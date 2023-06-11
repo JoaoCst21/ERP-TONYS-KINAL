@@ -44,6 +44,8 @@
                 <Menu mnemonicParsing="false" text="?">
                     <items>
                         <MenuItem onAction="#openEntityView" mnemonicParsing="false" text="Programador"/>
+                        <MenuItem onAction="#logOut" mnemonicParsing="false" text="Log out"/>
+                        <MenuItem onAction="#createNewUser" mnemonicParsing="false" text="Create new User"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Los has">

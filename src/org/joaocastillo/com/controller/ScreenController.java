@@ -35,6 +35,8 @@ public class ScreenController {
             put(Pantallas.PRODUCTOS_TIENE_PLATOS, () -> new Products_has_DishesComponent());
             put(Pantallas.SERVICIOS_TIENE_PLATOS, () -> new Services_has_DishesComponent());
             put(Pantallas.SERVICIOS_TIENE_EMPLEADOS, () -> new Services_has_EmployeesComponent());
+            put(Pantallas.LOGIN, () -> new LoginComponent());
+            put(Pantallas.CREATE_USER, () -> new SignUpComponent());
             put(Pantallas.PROGRAMADOR, () -> {
                 try {
                     return FXMLLoader.load(this.getClass().getResource("../view/ProgramadorView.fxml"));

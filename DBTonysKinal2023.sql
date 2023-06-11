@@ -43,7 +43,7 @@ create table Employees
     lastNamesEmployee    varchar(150)    not null,
     addressEmployee      varchar(150)    not null,
     contactPhoneEmployee varchar(150)    not null,
-    chefDegreeEmployee   int             not null,
+    chefDegreeEmployee   varchar(150)    not null,
     _idEmployeeType      int             not null,
 
     foreign key FK_Employees_EmployeeType (_idEmployeeType) references EmployeeType (idEmployeeType) on delete cascade
@@ -120,16 +120,10 @@ create table Services_has_Employees
 create table User
 (
     idUser       int primary key not null auto_increment,
+    userEmail    varchar(150)    not null,
+    userPassword varchar(150)    not null,
     userName     varchar(150)    not null,
-    userPassword varchar(150)    not null
-);
-
-create table Login
-(
-    idLogin int primary key not null auto_increment,
-    _idUser int             not null,
-
-    foreign key FK_Login_User (_idUser) references User (idUser) on delete cascade
+    userLastName varchar(150)    not null
 );
 
 delimiter $$
@@ -237,7 +231,7 @@ delimiter ;
 delimiter $$
 create procedure sp_insert_Employees(in sp_employeeNumber int, in sp_firstNamesEmployee varchar(150),
                                      in sp_lastNamesEmployee varchar(150), in sp_addressEmployee varchar(150),
-                                     in sp_contactPhoneEmployee varchar(150), in sp_chefDegreeEmployee int,
+                                     in sp_contactPhoneEmployee varchar(150), in sp_chefDegreeEmployee varchar(150),
                                      in sp__idEmployeeType int)
 begin
     insert into Employees(employeeNumber, firstNamesEmployee, lastNamesEmployee, addressEmployee, contactPhoneEmployee,
@@ -252,7 +246,7 @@ delimiter $$
 create procedure sp_update_Employees(in sp_idEmployee int, in sp_employeeNumber int,
                                      in sp_firstNamesEmployee varchar(150), in sp_lastNamesEmployee varchar(150),
                                      in sp_addressEmployee varchar(150), in sp_contactPhoneEmployee varchar(150),
-                                     in sp_chefDegreeEmployee int, in sp__idEmployeeType int)
+                                     in sp_chefDegreeEmployee varchar(150), in sp__idEmployeeType int)
 begin
     update Employees
     set idEmployee           = sp_idEmployee,
@@ -748,21 +742,25 @@ delimiter ;
 ######################################################################################################################
 
 delimiter $$
-create procedure sp_insert_User(in sp_userName varchar(150), in sp_userPassword varchar(150))
+create procedure sp_insert_User(in sp_userEmail varchar(150), in sp_userPassword varchar(150),
+                                in sp_userName varchar(150), in sp_userLastName varchar(150))
 begin
-    insert into User(userName, userPassword)
-    values (sp_userName, sp_userPassword);
+    insert into User(userEmail, userPassword, userName, userLastName)
+    values (sp_userEmail, sp_userPassword, sp_userName, sp_userLastName);
 end$$
 delimiter ;
 
 
 delimiter $$
-create procedure sp_update_User(in sp_idUser int, in sp_userName varchar(150), in sp_userPassword varchar(150))
+create procedure sp_update_User(in sp_idUser int, in sp_userEmail varchar(150), in sp_userPassword varchar(150),
+                                in sp_userName varchar(150), in sp_userLastName varchar(150))
 begin
     update User
     set idUser       = sp_idUser,
+        userEmail    = sp_userEmail,
+        userPassword = sp_userPassword,
         userName     = sp_userName,
-        userPassword = sp_userPassword
+        userLastName = sp_userLastName
     where idUser = sp_idUser;
 end$$
 delimiter ;
@@ -781,7 +779,7 @@ delimiter ;
 delimiter $$
 create procedure sp_select_User(in sp_idUser int)
 begin
-    select U.idUser, U.userName, U.userPassword
+    select U.idUser, U.userEmail, U.userPassword, U.userName, U.userLastName
     from User U
     where idUser = sp_idUser;
 end$$
@@ -791,7 +789,7 @@ delimiter ;
 delimiter $$
 create procedure sp_select_all_User()
 begin
-    select U.idUser, U.userName, U.userPassword from User U;
+    select U.idUser, U.userEmail, U.userPassword, U.userName, U.userLastName from User U;
 end$$
 delimiter ;
 
@@ -845,6 +843,8 @@ call sp_insert_Services_has_Employees(1, 1, now(), now(), 'Ciudad de Guatemala')
 call sp_insert_Services_has_Employees(1, 2, now(), now(), 'Ciudad de Guatemala');
 call sp_insert_Services_has_Employees(1, 3, now(), now(), 'Ciudad de Guatemala');
 
+call sp_insert_User('bcastillo-2022474@kinal.edu.gt', '123', 'Joao', 'Castillo');
+call sp_insert_User('test@gmail.com', '123', 'Test', 'Test');
 
 delimiter $$
 create procedure sp_master_report(in sp_idCompany int)
@@ -865,18 +865,18 @@ begin
 end $$
 delimiter ;
 
-
-call sp_master_report(1);
-
-call sp_select_all_Services_has_Dishes();
-
-select *
-from Companies C
-         inner join Services S on C.idCompany = S._idCompany
-where C.idCompany = 1;
 set global sql_mode = (select replace(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));
 
-select *
-from Companies C
-         inner join Budgets B on C.idCompany = B._idCompany
-where C.idCompany = 1;
+# call sp_master_report(1);
+#
+# call sp_select_all_Services_has_Dishes();
+#
+# select *
+# from Companies C
+#          inner join Services S on C.idCompany = S._idCompany
+# where C.idCompany = 1;
+#
+# select *
+# from Companies C
+#          inner join Budgets B on C.idCompany = B._idCompany
+# where C.idCompany = 1;

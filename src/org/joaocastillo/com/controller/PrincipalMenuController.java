@@ -55,4 +55,12 @@ public class PrincipalMenuController implements Initializable {
             put("baseDir", System.getProperty("user.dir").replaceAll("\\\\", "\\\\\\\\"));
         }});
     }
+
+    public void logOut(ActionEvent actionEvent) {
+        ScreenController.getInstance().activate(Pantallas.LOGIN);
+    }
+
+    public void createNewUser(ActionEvent actionEvent) {
+        ScreenController.getInstance().activate(Pantallas.CREATE_USER);
+    }
 }
