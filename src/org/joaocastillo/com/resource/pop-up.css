@@ -1,0 +1,10 @@
+.ok-button {
+  -fx-background-color: #07f456;
+}
+
+.ok-button:hover {
+  -fx-border-color: #07f456;
+  -fx-background-color: transparent;
+}
+
+/*# sourceMappingURL=pop-up.css.map */

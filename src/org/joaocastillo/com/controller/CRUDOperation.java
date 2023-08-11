@@ -1,6 +1,7 @@
 package org.joaocastillo.com.controller;
 
 import org.joaocastillo.com.view.components.GeneralModelComponent;
+import org.joaocastillo.com.view.components.PopUp;
 
 import javax.swing.JOptionPane;
 
@@ -57,8 +58,12 @@ public class CRUDOperation {
 //            btnSave.setText("Nuevo");
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, e.getMessage());
+//            JOptionPane.showMessageDialog(null, e.getMessage());
+            new PopUp(e);
+            return;
         }
+
+        new PopUp();
     }
 
     private void onDelete() {
@@ -69,8 +74,12 @@ public class CRUDOperation {
             component.fetchData();
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, e.getMessage());
+//            JOptionPane.showMessageDialog(null, e.getMessage());
+            new PopUp(e);
+            return;
         }
+
+        new PopUp();
     }
 
     private void toggleImageCancel() {

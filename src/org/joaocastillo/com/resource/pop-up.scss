@@ -1,0 +1,10 @@
+$color: #07f456;
+
+.ok-button {
+  -fx-background-color: $color;
+}
+
+.ok-button:hover {
+  -fx-border-color: $color;
+  -fx-background-color: transparent;
+}
